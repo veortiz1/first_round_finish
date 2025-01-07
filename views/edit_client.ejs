@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+
+    <p id="edit_name">Current Name: <%= name %></p>
+    <p id="edit_height">Current Height: <%= height %></p>
+    <p id="edit_weight">Current Weight: <%= weight %></p>
+    <p id="edit_phone">Current Phone: <%= phone %></p>
+    <p id="edit_experience">Current Experience<%= experience %></p>
+    <p>Id: <%= id %></p>
+
+    <p>If you don't want to change a value just leave field empty!</p>
+
+
+
+    <form  method="POST" id="edit_client_form"> 
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="height">Height (in cm):</label>
+        <input type="number" id="height" name="height" ><br><br>
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" name="weight" ><br><br>
+
+        <label for="experience">Years of Experience:</label>
+        <input type="number" id="experience" name="experience" ><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required><br><br>
+
+        <button type="button" onclick="edit_client_form()">Submit</button>
+    </form>
+
+
+    
+
+    <script src="/js/client_requests.js"></script>
+</body>
+</html>

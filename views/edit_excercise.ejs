@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="edit_exercise_name">Current Name: <%= name %></p>
+    <p id="edit_rounds">Current Rounds: <%= rounds %></p>
+    <p id="edit_time">Current Time: <%= time %></p>
+    <p id="edit_rest">Current Rest: <%= rest %></p>
+    <p id="edit_link">Current Link: <%= link %></p>
+    <p id="edit_description">Current Description: <%= description %></p>
+
+
+    <form id="add_excercise_form">
+        <label for="name">Excercise Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="rounds">Rounds:</label>
+        <input type="number" id="rounds" name="rounds" required><br><br>
+
+        <label for="time">Round Time:</label>
+        <input type="number" id="time" name="time" required><br><br>
+
+        <label for="rest">Rest:</label>
+        <input type="number" id="rest" name="rest" required><br><br>
+
+        <label for="link">Video Link:</label>
+        <input type="text" id="link" name="link" required><br><br>
+
+
+
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" required><br><br>
+
+        <button type="button" onclick="edit_excercise_form()">Submit</button>
+    </form>
+
+    <script src="/js/excercise_requests.js"></script>
+    
+</body>
+</html>
