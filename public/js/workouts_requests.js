@@ -54,3 +54,31 @@ async function create_workout(){
 
 }
 
+
+async function delete_workout(id){
+
+    try{
+
+        const response= await fetch('/workouts/'+id,
+        {method: 'DELETE'}
+        );
+     
+        const data= await response.json();
+     
+        if(!response.ok){
+         console.log(data.message);
+     
+        }
+        else{
+         console.log("workout deleted!");
+         
+        }
+     
+     }
+     catch(err){
+         console.log("Error: "+err);
+     }
+     
+     
+     
+}

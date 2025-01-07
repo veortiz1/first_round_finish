@@ -72,8 +72,11 @@ app.get('/profile', async(req,res) => {
     try{
        let [results] = await db.query("select * from clients where u_id=? ",[req.session.u_id]);
        let [results1] = await db.query("select * from exercises where u_id=? ",[req.session.u_id]);
+       let [results2] = await db.query("select * from workouts where u_id=? ",[req.session.u_id]);
+
+       
        console.log(results);
-       res.render("profile", {clients: results,excercises:results1});
+       res.render("profile", {clients: results,excercises:results1,workouts:results2});
 
 
     }

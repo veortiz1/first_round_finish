@@ -148,9 +148,38 @@
 
      <a href="/workout">create workout</a>
 
+    <table class="profile_workout_table">
+        <tr>
+        <th>Name</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+
+
+
+        <% workouts.forEach(function(workout) { %>
+
+            <tr>
+            <td><%= workout.name %></td>
+            <td>
+    
+                <button  onclick="delete_workout('<%= workout.w_id %>')">Delete </button>
+              </td>
+              <td>
+                <button onclick="edit_workout('<%=workout.w_id %>')"> Edit </button>
+              </td>
+        </tr>
+        <% }) %>
+
+        
+
+
+    </table>
+
 
 
     <script src="/js/client_requests.js"></script>
     <script src="/js/excercise_requests.js"></script>
+    <script src="/js/workouts_requests.js"></script>
 </body>
 </html>
