@@ -30,28 +30,26 @@ function add_to_workout(id){
 
 
 async function create_workout(){
+    name=document.getElementById("workout_name").value;
 
-    try{
+    const response = await fetch("/workouts",{
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name:name,workouts:workouts})
 
-        const response= await fetch('/excercise/'+id,
-        {method: 'POST'}
-        );
-     
-        const data= await response.json();
-     
-        if(!response.ok){
-         console.log(data.message);
-     
-        }
-        else{
-         console.log("excercise deleted!");
-         
-        }
-     
-     }
-     catch(err){
-         console.log("Error: "+err);
-     }
+
+    })
+
+   const data = await response.json();
+
+   if(!response.ok){
+    console.log("Excercise Not added!");
+   }
+   else{
+    console.log("Addeddd!!");
+   }
      
 
 }
