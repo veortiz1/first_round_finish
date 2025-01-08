@@ -77,6 +77,52 @@ router.delete("/:id",async(req,res)=>{
 
 })
 
+router.put("/edit_exercise", async(req,res) =>{
+    console.log("currently editing exercise");
+     let {name,rounds,time,rest,link,description,id}=req.body;
+
+     try{
+        console.log("currently editing exercise");
+
+        [results]= await db.query("select * from workout_exercises where we_id = ? ", [id]);
+        if(!name){
+            name=results[0].name;
+        }
+        if(!rounds){
+            rounds=results[0].rounds;
+        }
+        if(!time){
+            time=results[0].time;
+        }
+        if(!rest){
+            rest=results[0].rest;
+        }
+        if(!link){
+            link=results[0].link;
+        }
+        if(!description){
+            description=results[0].description;
+        }
+
+        await db.query("update workout_exercises set name=?,rounds=?,time=?,rest=?,link=?,description=? where we_id=?",[name,rounds,time,rest,link,description,id]);
+
+        return res.status(200).json({
+            success: true,
+            message: "exercisev  updated in workout",
+          });
+
+     }
+     catch(err){
+        console.log(err);
+        return res.status(400).json({
+            success: false,
+            message: "exercisev not updated in workout",
+          });
+     }
+
+
+})
+
 
 
 router.put("/:id",async(req,res)=>{
@@ -125,38 +171,7 @@ router.delete("/delete_exercise/:id", async(req,res) => {
 })
 
 
-router.put("/edit_exercise", async(req,res) =>{
-     const {name,rounds,time,rest,link,description,id}=req.body;
 
-     try{
-
-        [results]= await db.query("select * from workout_exercises where we_id = ? ", [id]);
-        if(!name){
-            name=results[0].name;
-        }
-        if(!rounds){
-            rounds=results[0].rounds;
-        }
-        if(!time){
-            time=db.results[0].time;
-        }
-
-        return res.status(200).json({
-            success: true,
-            message: "exercisev  updated in workout",
-          });
-
-     }
-     catch(err){
-        console.log(err);
-        return res.status(400).json({
-            success: false,
-            message: "exercisev not updated in workout",
-          });
-     }
-
-
-})
 
 
 

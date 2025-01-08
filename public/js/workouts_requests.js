@@ -145,8 +145,10 @@ async function delete_from_workout(id){
 
 }
 
-async function edit_workout_exercise(id){
-    let name=document.getElementById("name").value;
+
+async function edit_workout_exercise(){
+    console.log(workout_id);
+    let name=document.getElementById("e_name").value;
     let rounds=document.getElementById("rounds").value;
     let time=document.getElementById("time").value;
     let rest=document.getElementById("rest").value;
@@ -160,7 +162,7 @@ async function edit_workout_exercise(id){
             headers:{
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description,id:id})
+            body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description,id:workout_id})
     
     
         })
@@ -172,7 +174,7 @@ async function edit_workout_exercise(id){
      
         }
         else{
-         console.log("workout deleted!");
+         console.log("workout deldddeted!");
          
         }
      

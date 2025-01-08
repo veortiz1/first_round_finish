@@ -19,6 +19,7 @@
         <p><%= exercise.time %></p>
         <p><%= exercise.rest %></p>
         <p><%= exercise.link %></p>
+        <p><%= exercise.description %></p>
         <button onclick="set_w_id('<%= exercise.we_id %>', '<%= exercise.name %>')">edit</button>
         <button onclick="delete_from_workout('<%= exercise.we_id %>')">delete</button>
 
@@ -33,28 +34,28 @@
       <p id="currently_editing">Currently Editing no exercises</p>
 
 
-      <form id="add_excercise_form">
+      <form >
         <label for="e_name">Excercise Name:</label>
-        <input type="text" id="e_name" name="e_name" required><br><br>
+        <input type="text" id="e_name" name="e_name" ><br><br>
 
         <label for="rounds">Rounds:</label>
-        <input type="number" id="rounds" name="rounds" required><br><br>
+        <input type="number" id="rounds" name="rounds" ><br><br>
 
         <label for="time">Round Time:</label>
-        <input type="number" id="time" name="time" required><br><br>
+        <input type="number" id="time" name="time" ><br><br>
 
         <label for="rest">Rest:</label>
-        <input type="number" id="rest" name="rest" required><br><br>
+        <input type="number" id="rest" name="rest" ><br><br>
 
         <label for="link">Video Link:</label>
-        <input type="text" id="link" name="link" required><br><br>
+        <input type="text" id="link" name="link" ><br><br>
 
 
 
         <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br><br>
+        <input type="text" id="description" name="description" ><br><br>
 
-        <button type="button" onclick="edit_workout_exercise('<%= exercise.we_id %>')">Submit</button>
+        <button type="button" onclick="edit_workout_exercise()">Submit</button>
     </form>
 
 
