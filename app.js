@@ -153,6 +153,25 @@ app.get("/edit_exercise", async(req,res) => {
 
 })
 
+app.get("/edit_workout", async(req,res) => {
+    try{
+    
+        [results]= await db.query("select * from workouts where w_id=?",req.session.w_id);
+        [results1]= await db.query("select * from workout_exercises where w_id = ?",[req.session.w_id]);
+        console.log(results1);
+
+
+        
+
+        res.render("edit_workout",{workout_name:results[0].name,exercises:results1});
+
+    }
+    catch(err){
+        console.log(err);
+    }
+
+})
+
 
 app.get("/test", async(req,res) => {
 

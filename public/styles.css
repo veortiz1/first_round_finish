@@ -6,3 +6,9 @@
   font-size: .7rem;
 }
 
+
+.edit_workout_row{
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+}
