@@ -10,19 +10,22 @@ const client = require('../config/reddis');
 
 router.post("/",async(req,res) => {
   
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        consolee.log("errorr");
-        return res.status(401).json("errorsss!!!");
-      }
-    else{
+   
+
+
 
           
     const {name,height,weight,experience,phone} = req.body;
+    
+    
+
+
     try{
         [results] = await db.query("insert into clients(name,height,weight,exp,phone,u_id) values (?,?,?,?,?,?)", [name,height,weight,experience,phone,req.session.u_id]);
-        client.set("client:{}",69);
-        client.expire("test1",60);
+        c_id=results.insertId;
+
+        client.set('client:'+c_id,JSON.stringify({name:name,height:height,weight:weight,exp:experience,phone:phone,u_id:req.session.u_id}));
+        client.expire('client:'+c_id,6000);
         return res.status(200).json({
             success: true,
             message: "client added!",
@@ -42,7 +45,7 @@ router.post("/",async(req,res) => {
     }
 
 
-}
+
   
 
 })
