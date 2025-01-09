@@ -1,17 +1,123 @@
-.profile_clients,.profile_clients tr,.profile_clients th,.profile_clients td{
-  
-  
-  border-collapse: collapse;
 
-  font-size: .7rem;
+:root {
+  --body-font: 1rem;
+  --border-width:.3rem;
+}
+body{
+  font-family: "Inter", serif;
 }
 
 
-.edit_workout_row{
-  display: flex;
+
+
+
+
+.client_frame{
+  margin: 0;
   width: 100vw;
-  justify-content: space-evenly;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+
+}
+
+.client_frame_title{
+  width: 100vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  max-width: 1500px;
+ 
+  font-weight: 900;
+  font-size: 2rem;
+  margin: 0;
+}
+table{
+  border-collapse: separate; /* Ensures that border-spacing works */
+ 
+  max-width: 1500px;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  border-spacing: 0 1rem;
+
+}
+td{
+  border-bottom: var(--border-width) solid black;
+  width: 100vw;
+  max-width: 1500px;
+  font-size: var(--body-font);
+  font-family: "Inter", serif;
+  font-weight: 200;
+
+
+ 
+}
+
+.profile_clients_table button{
+  display: flex;
+  font-family: "Inter", serif;
+  font-size: var(--body-font);
+  align-items: center;
+  background: none;
+  border: none;
+
+}
+
+.profile_clients_table img,label img{
+height: 1.5vw;
+
+}
+form{
+  border: var(--border-width) solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  gap: 1rem;
+}
+
+.add_client_frame_title{
+  display: flex;
+  width: 95%;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
+form button{
+  font-family: "Inter", serif;
+  font-size: 1rem;
+  background-color: black;
+  font-weight: 900;
+  color: white;
+  border: none;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  
+}
+
+.label_frame{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+input{
+  border: none;
+  border-bottom: var(--border-width) solid black;
+  font-size: var(--body-font);
 }
 
 
-.client_frame
+td p{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.add_client_frame{
+  width: 100vw;
+  max-width: 1500px;
+  display: flex;
+  justify-content: space-between;
+}
+

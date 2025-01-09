@@ -3,16 +3,21 @@ const router = express.Router();
 const db = require('../config/db');
 const { check, validationResult } = require('express-validator');
 
+const client = require('../config/reddis');
 
 
 
-router.post("/",check('name').isAlpha(),async(req,res) => {
+
+router.post("/",async(req,res) => {
+    client.set("test1",69,"EX",60);
+    client.expire("test1",60);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         consolee.log("errorr");
         return res.status(401).json("errorsss!!!");
       }
     else{
+
           
     const {name,height,weight,experience,phone} = req.body;
     try{
