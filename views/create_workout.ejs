@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <label for="workout_name">Workout Name:</label>
+    <input type="text" id="workout_name" name="workout_name"><br><br>
+
+    <% results.forEach(function(result) { %>
+
+        <button onclick="add_to_workout('<%= result.e_id %>')"><%= result.name %></button>
+       
+    <% }) %>
+
+
+    <button onclick="create_workout()">Create Workout</button>
+
+
+    
+
+
+    <script src="/js/workouts_requests.js"></script>
+    
+</body>
+</html>
