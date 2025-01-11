@@ -13,19 +13,22 @@
     <p id="edit_link">Current Link: <%= link %></p>
     <p id="edit_description">Current Description: <%= description %></p>
 
+    
+
 
     <form id="add_excercise_form">
+        <p class="error" id="exercise_form_error"></p>
         <label for="name">Excercise Name:</label>
         <input type="text" id="name" name="name" required><br><br>
 
         <label for="rounds">Rounds:</label>
-        <input type="number" id="rounds" name="rounds" required><br><br>
+        <input type="text" id="rounds" name="rounds" required><br><br>
 
         <label for="time">Round Time:</label>
-        <input type="number" id="time" name="time" required><br><br>
+        <input type="text" id="time" name="time" required><br><br>
 
         <label for="rest">Rest:</label>
-        <input type="number" id="rest" name="rest" required><br><br>
+        <input type="text" id="rest" name="rest" required><br><br>
 
         <label for="link">Video Link:</label>
         <input type="text" id="link" name="link" required><br><br>
@@ -34,6 +37,8 @@
 
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" required><br><br>
+
+        <input type="hidden" id="csrf_edit_exercise" value="<%= csrf %>">
 
         <button type="button" onclick="edit_excercise_form()">Submit</button>
     </form>

@@ -1,13 +1,38 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
-const { check, validationResult } = require('express-validator');
+const {body, check, validationResult } = require('express-validator');
+const client = require('../config/reddis');
 
 
 
-router.post("/",async(req,res)=>{
-    let {name,workouts}=req.body;
-    console.log("Workouts: "+workouts);
+router.post("/",
+body("name").matches(/^[A-Za-z0-9 ]+$/).withMessage("Name must only contain letters,numbers,and spaces")
+,async(req,res)=>{
+    console.log("IN workouts / post");
+    let {name,workouts,token}=req.body;
+
+    try{
+        let redis_token= await client.get("user:"+req.session.u_id+":token");
+        if(redis_token==token){
+            console.log("TOKENS EQUAL!");
+        }
+        else{
+            return res.status(401).json({
+                success:false,
+                message:"Tokens not equal!",
+            })
+        }
+
+    }
+    catch(err){
+        console.log("ERROR:" +err);
+        return res.status(500).json({
+            success:false,
+            message: "Redis Error!",
+        })
+    }
+
    
 
 
@@ -30,7 +55,10 @@ router.post("/",async(req,res)=>{
                 [w_id, workout, exercise[0].name, exercise[0].rounds, exercise[0].time, exercise[0].rest, exercise[0].link, exercise[0].description, exercise[0].u_id] );
             }
             catch(err){
-                console.log(err);
+               return res.status(500).json({
+               success:false,
+               message: "Database error",
+               });
             }
         }
         
@@ -60,7 +88,7 @@ router.delete("/:id",async(req,res)=>{
 
         return res.status(200).json({
             success: true,
-            message: "workout Deleted!",
+            message: "You are hired!",
           });
         
     

@@ -1,47 +1,72 @@
 
 
-function create_client(){
+async function create_client(){
     let name=document.getElementById("name").value;
     let height=document.getElementById("height").value;
     let weight=document.getElementById("weight").value;
     let exp=document.getElementById("experience").value;
     let phone=document.getElementById("phone").value;
+    let token=document.getElementById("csrf_add").value;
 
+    console.log(token);
 
+    try{
 
-    fetch("/clients",{
+    const response = await fetch("/clients",{
         method:"POST",
         headers: {
             "Content-Type": "application/json"
 
         },
-        body: JSON.stringify({name:name,height:height,weight:weight,experience:exp,phone:phone})
-    })
-    .then(response =>{
+        body: JSON.stringify({name:name,height:height,weight:weight,experience:exp,phone:phone,token:token})
+    });
+
+  
+        const data= await response.json();
+
+
+
         if(!response.ok){
-            console.log("Client wasnt added sadly");
+       
+         if(!data.error){
+            error=data.message;
+         }
+         else{
+            error="Client Not Added "+data.error;
+         }
+            document.getElementById("error").innerText=error;
+            document.getElementById("error").style.color="red";
+          
         } 
         else{
             console.log("Client was added");
+            document.getElementById("error").innerText="Client Added refresh page to see changes!";
+            document.getElementById("error").style.color="green";
+            
         }
+    
     }
+
+    catch(err){
+        console.log("Error creating client: "+err);
+    }
+
+
         
-        )
-    .catch(error => {
         
-        console.log(error)
-    })
+
+
 
 
 }
 
 
-async function delete_client(id){
+async function delete_client(id,token){
 
 
     try{
 
-   const response= await fetch('/clients/'+id,
+   const response= await fetch('/clients/'+id+"/"+token,
    {method: 'DELETE'}
    );
 
@@ -53,7 +78,7 @@ async function delete_client(id){
    }
    else{
     console.log("Client deleted!");
-    document.getElementById(`client_${id}`).remove();
+ 
    }
 
 }
@@ -103,6 +128,7 @@ async function edit_client_form(){
     let weight=document.getElementById("weight").value;
     let exp=document.getElementById("experience").value;
     let phone=document.getElementById("phone").value;
+    let token=document.getElementById("csrf_add_edit").value;
 
     try{
         const response=await fetch("/clients",{
@@ -111,12 +137,19 @@ async function edit_client_form(){
                 "Content-Type": "application/json"
     
             },
-            body: JSON.stringify({name:name,height:height,weight:weight,phone:phone,experience:exp})
+            body: JSON.stringify({name:name,height:height,weight:weight,phone:phone,experience:exp,token:token})
         })
 
         const data= await response.json();
         if(!response.ok){
-            console.log("Client Couldnt be updated!");
+            if(!data.error){
+                console.log("Client Couldnt Be Updated! "+data.message);
+
+            }
+            else{
+                console.log("Client Couldnt Be Updated! "+data.error);
+            }
+           
         }
         else{
             

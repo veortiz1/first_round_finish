@@ -30,7 +30,7 @@ function add_to_workout(id){
 }
 
 
-async function create_workout(){
+async function create_workout(token){
     name=document.getElementById("workout_name").value;
 
     const response = await fetch("/workouts",{
@@ -38,7 +38,7 @@ async function create_workout(){
         headers:{
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({name:name,workouts:workouts})
+        body: JSON.stringify({name:name,workouts:workouts,token:token})
 
 
     })
