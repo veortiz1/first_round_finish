@@ -21,7 +21,7 @@ app.use(session({
     cookie: {
       secure: false,
       httpOnly: true,         
-      maxAge: 24 * 60 * 60 * 1000 
+      maxAge: 2 * 60 * 60 * 1000
     }
   }));
 
@@ -77,7 +77,7 @@ app.get('/profile', async(req,res) => {
 
        
        console.log(results);
-       res.render("profile", {clients: results,excercises:results1,workouts:results2});
+       res.render("profile", {clients: results,excercises:results1,workouts:results2,csrf:req.session.csrf});
 
 
     }
@@ -109,7 +109,7 @@ try{
     }
     else{
         console.log(results);
-        res.render("edit_client",{name: results[0].name, height: results[0].height, weight: results[0].weight,phone: results[0].phone ,experience: results[0].exp, id:results[0].c_id});
+        res.render("edit_client",{name: results[0].name, height: results[0].height, weight: results[0].weight,phone: results[0].phone ,experience: results[0].exp, id:results[0].c_id,csrf:req.session.csrf});
         
 
     }
@@ -127,7 +127,7 @@ app.get("/workout", async(req,res)=>{
     try{
         [results]= await db.query("select * from exercises where u_id=?",[req.session.u_id]);
 
-        res.render("create_workout",{results:results});
+        res.render("create_workout",{results:results,csrf:req.session.csrf});
 
     }
     catch(err){
@@ -145,7 +145,7 @@ app.get("/edit_exercise", async(req,res) => {
     try{
         [results]=await db.query("select * from exercises where e_id=?",[req.session.e_id]);
 
-        res.render("edit_excercise",{name:results[0].name,rounds:results[0].rounds,time:results[0].time,rest:results[0].rest,link:results[0].link,description:results[0].description});
+        res.render("edit_excercise",{name:results[0].name,rounds:results[0].rounds,time:results[0].time,rest:results[0].rest,link:results[0].link,description:results[0].description,csrf:req.session.csrf});
 
     }
     catch(err){

@@ -121,3 +121,18 @@ td p{
   justify-content: space-between;
 }
 
+
+#error{
+  font-size: var(--body-font);
+  color: red;
+  text-align: center;
+  margin: 0;
+}
+
+
+.error{
+  font-size: var(--body-font);
+  color: red;
+  text-align: center;
+  margin: 0;
+}

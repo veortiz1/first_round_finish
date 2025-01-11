@@ -6,6 +6,7 @@ async function create_excercise(){
     let rest=document.getElementById("rest").value;
     let link=document.getElementById("link").value;
     let description=document.getElementById("description").value;
+    let token=document.getElementById("csrf_add").value;
 
 
    const response = await fetch("/excercise",{
@@ -13,7 +14,7 @@ async function create_excercise(){
         headers:{
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description})
+        body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description,token:token})
 
 
     })
@@ -21,10 +22,20 @@ async function create_excercise(){
    const data = await response.json();
 
    if(!response.ok){
-    console.log("Excercise Not added!");
+    if(!response.error){
+        console.log("Excercise Not added!");
+        document.getElementById("error1").innerText=data.error;
+    }
+    else{
+        console.log("Excercise Not added!");
+        document.getElementById("error1").innerText=data.message;
+    }
+   
    }
    else{
     console.log("Addeddd!!");
+    document.getElementById("error1").innerText="Exercise Added!";
+
    }
 
 }
@@ -53,14 +64,14 @@ async function edit_excercise_form(){
     let rest=document.getElementById("rest").value;
     let link=document.getElementById("link").value;
     let description=document.getElementById("description").value;
-
+    let token=document.getElementById("csrf_edit_exercise" ).value;
 
    const response = await fetch("/excercise",{
         method: "put",
         headers:{
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description})
+        body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description,token:token})
 
 
     })
@@ -69,6 +80,12 @@ async function edit_excercise_form(){
 
    if(!response.ok){
     console.log("Excercise Not added!");
+    if(data.error){
+        document.getElementById("exercise_form_error").innerText=data.error;
+    }
+    else{
+        document.getElementById("exercise_form_error").innerText=data.message;
+    }
    }
    else{
     document.getElementById("edit_exercise_name").innerText="Current Name: "+data.name;
@@ -78,18 +95,19 @@ async function edit_excercise_form(){
     document.getElementById("edit_link").innerText="Current Link: "+data.link;
     document.getElementById("edit_description").innerText="Current Description: "+data.description;
     console.log("Addeddd!!");
+    document.getElementById("exercise_form_error").innerText="Client Updated";
    }
     
 }
 
 
 
-async function delete_exercise(id){
+async function delete_exercise(id,token){
 
 
     try{
 
-   const response= await fetch('/excercise/'+id,
+   const response= await fetch('/excercise/'+id+"/"+token,
    {method: 'DELETE'}
    );
 
