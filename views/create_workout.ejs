@@ -10,6 +10,8 @@
     <label for="workout_name">Workout Name:</label>
     <input type="text" id="workout_name" name="workout_name"><br><br>
 
+    <p class="error" id="create_workout_error"></p>
+
     <% results.forEach(function(result) { %>
 
         <button onclick="add_to_workout('<%= result.e_id %>')"><%= result.name %></button>

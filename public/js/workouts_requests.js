@@ -47,9 +47,19 @@ async function create_workout(token){
 
    if(!response.ok){
     console.log("Excercise Not added!");
+    if(data.error){
+        document.getElementById("create_workout_error").innerText=data.error;
+    }
+    else{
+        document.getElementById("create_workout_error").innerText=data.message;
+    }
+   
+
    }
    else{
     console.log("Addeddd!!");
+    document.getElementById("create_workout_error").innerText="Workout added!";
+
    }
      
 
