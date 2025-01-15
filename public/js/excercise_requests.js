@@ -35,6 +35,7 @@ async function create_excercise(){
    else{
     console.log("Addeddd!!");
     document.getElementById("error1").innerText="Exercise Added!";
+    window.location.href = '/profile';
 
    }
 

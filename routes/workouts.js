@@ -10,6 +10,12 @@ router.post("/",
 body("name").matches(/^[A-Za-z0-9 ]+$/).withMessage("Name must only contain letters,numbers,and spaces")
 ,async(req,res)=>{
     console.log("IN workouts / post");
+    const errors = validationResult(req); 
+            if (!errors.isEmpty()) {
+                console.log("Input validation error!");
+                const firstError = errors.array()[0]; 
+                return res.status(422).json({ error: firstError.msg});
+            }   
     let {name,workouts,token}=req.body;
 
     try{
@@ -81,9 +87,30 @@ body("name").matches(/^[A-Za-z0-9 ]+$/).withMessage("Name must only contain lett
 })
 
 
-router.delete("/:id",async(req,res)=>{
+router.delete("/:id/:token",async(req,res)=>{
+    console.log("In workouts / id / token Delete");
     try{
         const wid = req.params.id; 
+        const token = req.params.token;
+
+        try{ 
+            let redis_token= await client.get("user:"+req.session.u_id+":token");
+            if(redis_token==token){
+                console.log("TOKENS EQAUL");
+            }
+            else{
+                return res.status(401)({
+                    success:true,
+                    message:"Tokens Arent eqaul!",
+                })
+            }
+        }
+        catch(err){
+            return res.status(500).json({
+                success:true,
+                message: "Reddis error!",
+            })
+        }
         await db.query("delete from workouts where w_id=? and u_id",[wid,req.session.u_id]);
 
         return res.status(200).json({
@@ -105,9 +132,47 @@ router.delete("/:id",async(req,res)=>{
 
 })
 
-router.put("/edit_exercise", async(req,res) =>{
-    console.log("currently editing exercise");
-     let {name,rounds,time,rest,link,description,id}=req.body;
+router.put("/edit_exercise", 
+body("name").optional({checkFalsy:true})
+.matches(/^[A-Za-z0-9 ]+$/).withMessage("Name must only contain letters,numbers,and spaces"),
+body("rounds").optional({checkFalsy:true})
+.isInt().withMessage("Rounds Must Be a Number!"),
+body("time").optional({checkFalsy:true}).isInt().withMessage("Time must be a number!"),
+body("rest").optional({checkFalsy:true}).isInt().withMessage("Rest must be a number"),
+body("link").optional({checkFalsy: true}).matches(/^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|embed\/|v\/)|youtu\.be\/)[a-zA-Z0-9_-]{11}$/)
+.withMessage("Please enter a valid youtube link"),
+body("description").optional()
+,async(req,res) =>{
+    console.log("in / workouts /edit_exercise");
+     let {name,rounds,time,rest,link,description,id,token}=req.body;
+     const errors = validationResult(req); 
+     if (!errors.isEmpty()) {
+         console.log("Input validation error!");
+         const firstError = errors.array()[0]; 
+         return res.status(422).json({ error: firstError.msg});
+     }   
+
+     try{
+        let redis_token= await client.get("user:"+req.session.u_id+":token");
+        if(redis_token==token){
+            console.log("TOKENS EQUAL!");
+        }
+        else{
+            console.log(token,redis_token);
+            return res.status(401).json({
+                success:false,
+                message:"Tokens not equal!",
+            })
+        }
+
+
+     }
+     catch(err){
+        return res.status(500).json({
+            success:false,
+            message:"Redis Error!",
+        })
+     }
 
      try{
         console.log("currently editing exercise");
@@ -177,10 +242,30 @@ router.put("/:id",async(req,res)=>{
 
 })
 
-router.delete("/delete_exercise/:id", async(req,res) => {
-
+router.delete("/delete_exercise/:id/:token", async(req,res) => {
+    console.log("in workouts /delete_exercise /id /token");
     try{
         const wid = req.params.id; 
+        const token = req.params.token;
+
+        try{
+            let redis_token= await client.get("user:"+req.session.u_id+":token");
+            if(redis_token==token){
+                console.log("TOKENS EQUAL!");
+            }
+            else{
+                return res.status(401).json({
+                    success:false,
+                    message:"Tokens not equal!",
+                })
+            }
+        }
+        catch(err){
+            return res.status(500).json({
+                success:false,
+                message:"Redis Error!",
+            })
+        }
         await db.query("delete from workout_exercises where we_id=?",[wid]);
         return res.status(200).json({
             success: true,

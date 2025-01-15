@@ -18,9 +18,11 @@ function add_to_workout(id){
     });
     if(dont_add==0){
         workouts.push(id)
+        document.getElementById("add_to_workout"+id).style.backgroundColor="yellow";
     }
     else{
       workouts.splice(final_index,1)
+      document.getElementById("add_to_workout"+id).style.backgroundColor="white";
     }
 
     console.log(workouts);
@@ -66,11 +68,11 @@ async function create_workout(token){
 }
 
 
-async function delete_workout(id){
+async function delete_workout(id,token){
 
     try{
 
-        const response= await fetch('/workouts/'+id,
+        const response= await fetch('/workouts/'+id+'/'+token,
         {method: 'DELETE'}
         );
      
@@ -78,6 +80,7 @@ async function delete_workout(id){
      
         if(!response.ok){
          console.log(data.message);
+
      
         }
         else{
@@ -129,10 +132,10 @@ function set_w_id(id,name){
 
 }
 
-async function delete_from_workout(id){
+async function delete_from_workout(id,token){
     try{
 
-        const response= await fetch('/workouts/delete_exercise/'+id,
+        const response= await fetch('/workouts/delete_exercise/'+id+"/"+token,
         {method: 'DELETE'}
         );
      
@@ -140,10 +143,12 @@ async function delete_from_workout(id){
      
         if(!response.ok){
          console.log(data.message);
+         document.getElementById("workout_text").innerText=data.message;
      
         }
         else{
          console.log("workout deleted!");
+         document.getElementById("workout_text").innerText="Workout Deleted!";
          
         }
      
@@ -156,7 +161,7 @@ async function delete_from_workout(id){
 }
 
 
-async function edit_workout_exercise(){
+async function edit_workout_exercise(id){
     console.log(workout_id);
     let name=document.getElementById("e_name").value;
     let rounds=document.getElementById("rounds").value;
@@ -164,6 +169,7 @@ async function edit_workout_exercise(){
     let rest=document.getElementById("rest").value;
     let link=document.getElementById("link").value;
     let description=document.getElementById("description").value;
+    let token=id;
 
     try{
 
@@ -172,7 +178,7 @@ async function edit_workout_exercise(){
             headers:{
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description,id:workout_id})
+            body: JSON.stringify({name:name,rounds:rounds,time:time,rest:rest,link:link,description:description,id:workout_id,token:token})
     
     
         })
@@ -180,11 +186,19 @@ async function edit_workout_exercise(){
         const data= await response.json();
      
         if(!response.ok){
-         console.log(data.message);
+       if(data.error){
+        document.getElementById("edit_workout_exercise_error").innerText=data.error;
+       }
+       else{
+        document.getElementById("edit_workout_exercise_error").innerText=data.message;
+       }
+        
      
         }
         else{
-         console.log("workout deldddeted!");
+         
+                document.getElementById("edit_workout_exercise_error").innerText="Exercise Edited!";
+               
          
         }
      

@@ -8,205 +8,335 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <p><%= csrf %></p>
-   <section class="client_frame">
-    <div class="client_frame_title">
-        <p>Clients</p>
-    </div>
+    <section class="manage_frame">
 
-    <table class="profile_clients_table">
-    
-      
-      
-            <% clients.forEach(function(client) { %>
-    
-            
-             
-             <tr>
-               
-              <td><p><img src="/icons/name.png" alt=""> <%= client.name %> </p></td>
-    
-              <td> <p><img src="/icons/height.png" alt=""> <%= client.height %> Inches </p></td>
-    
-              <td><p><img src="/icons/weight.png" alt=""><%= client.weight %> Lbs </p> </td>
-              <td> <p> <img src="/icons/exp.png" alt=""><%= client.exp %> Years </p></td>
-              <td><p><img src="/icons/phone.png" alt=""><%= client.phone %></p></td>
-    
-              <td>
-    
-              <button  onclick="delete_client('<%= client.c_id %>','<%= csrf%>')"> <img src="/icons/delete.png" alt="">Delete</button>
-            </td>
-            <td>
-              <button onclick="edit_client('<%= client.c_id %>')"><img src="/icons/edit.png" alt=""> Edit </button>
-            </td>
-         
-            
-            </tr>
-            <% }) %>
-        </table>
+   
 
-        <div class="add_client_frame">
-          
+
+     
+        <section class="top">
+            <p>User:Veortiz1</p>
+        
+            <button> <img src="/icons/Logout.png" alt=""></button>
+        </section>
+        <div class="title_box" id="title_box">
+
+            <p class="title">Create Client/Exercise/Workout</p>
+            <p class="sub_title">Click on a button to create a client,exercise or workout.</p>
+        </div>
+
+        <section class="add_client" id="add_client">
             <form id="add_client_form">
        
 
-                <div class="add_client_frame_title"><p>Add Client</p></div>
+                <p class="title">Add Client</p>
+                <p class="sub_title">Enter client information, you can edit it later, all fields are optional except for name.</p>
                 <p id="error"></p>
 
-                <div class="label_frame">
-                <label for="name"><img src="/icons/name.png" alt=""></label>
+
+               
+               
                 <input type="text" id="name" name="name" placeholder="Name" ><br><br>
-            </div>
         
-            <div class="label_frame">
-                <label for="height"><img src="/icons/height.png" alt=""></label>
+        
+            
+               
                 <input type="text" id="height" name="height" placeholder="Height (Optional)" ><br><br>
-            </div>
+           
         
-            <div class="label_frame">
-                <label for="weight"><img src="/icons/weight.png" alt=""></label>
+           
                 <input type="text" id="weight" name="weight" placeholder="Weight  (Optional)"><br><br>
-            </div>
         
-            <div class="label_frame">
-                <label for="experience"><img src="/icons/exp.png" alt=""></label>
+        
+         
+              
                 <input type="text" id="experience" name="experience" placeholder="Experience  (Optional)" ><br><br>
-            </div>
+          
 
             <input type="hidden" id="csrf_add" value="<%= csrf %>">
         
         
         
-            <div class="label_frame">
-                <label for="phone"><img src="/icons/phone.png" alt=""></label>
+           
                 <input type="text" id="phone" name="phone" required placeholder="Phone Number  (Optional)"><br><br>
-            </div>
+      
         
+                
                 <button type="button" onclick="create_client()">Add Client</button>
+
+                <button type="button" onclick="add_client_home()" id="red">Go Back</button>
+            </form>
+        </section>
+
+
+        <section class="add_exercise" id="add_exercise">
+            <form id="add_excercise_form">
+                <p class="title">Add Exercise</p>
+                <p class="sub_title">Enter exercise information, you can edit it later, name,rounds,time,and rest are required to create an exercise.</p>
+                <p class="error" id="error1"></p>
+                
+                <input type="text" id="e_name" name="e_name" required placeholder="Exercise Name"><br><br>
+        
+             
+                <input type="text" id="rounds" name="rounds" required placeholder="Rounds"><br><br>
+        
+           
+                <input type="text" id="time" name="time" required placeholder="Time (in Seconds)"><br><br>
+        
+           
+                <input type="text" id="rest" name="rest" required placeholder="Rest (in Seconds) "><br><br>
+        
+               
+                <input type="text" id="link" name="link" placeholder="Youtube Link (Optional)" ><br><br>
+        
+        
+        
+              
+                <input type="text" id="description" name="description" placeholder="Description (300 word limit) (Optional)"><br><br>
+        
+                <input type="hidden" id="csrf_add" value="<%= csrf %>">
+        
+                <button type="button" onclick="create_excercise()">Add Exercise</button>
+                <button type="button" onclick="add_client_home()" id="red">Go Back</button>
+        
             </form>
 
+        </section>
+
+
+    
+
+       
+        <section class="add" id="add">
+     
+
+            <button class="add_box"  id="client_color" onclick="add_client_view()">
+                <p class="title" >Add Client </p>
+         
+            </button>
+
+
+            <button class="add_box"  id="exercise_color" onclick="add_exercise_view()">
+                <p class="title">Add Exercise </p>
+              
+            </button>
+
+            <button class="add_box" onclick="add_workout_view()" id="workout_color">
+                <p class="title">Create Workout </p>
+             
+            </button>
+        </section>
+
+        <div class="title_box" id="title_box">
+
+            <p class="title">Add Workouts to Client</p>
+            <p class="sub_title">Assign a workout for each day of the week to a client.</p>
         </div>
 
-   </section>
-
-   
-
-
-
-
-    <form id="add_excercise_form">
-        <p class="error" id="error1"></p>
-        <label for="e_name">Excercise Name:</label>
-        <input type="text" id="e_name" name="e_name" required><br><br>
-
-        <label for="rounds">Rounds:</label>
-        <input type="text" id="rounds" name="rounds" required><br><br>
-
-        <label for="time">Round Time:</label>
-        <input type="text" id="time" name="time" required><br><br>
-
-        <label for="rest">Rest:</label>
-        <input type="text" id="rest" name="rest" required><br><br>
-
-        <label for="link">Video Link:</label>
-        <input type="text" id="link" name="link" required><br><br>
+        <section class="assign">
+        
+            <button class="add_box" onclick="assign_view()" id="assign_color">
+                <p class="title">Assign Workouts to Client </p>
+             
+            </button>
 
 
-
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br><br>
-
-        <input type="hidden" id="csrf_add" value="<%= csrf %>">
-
-        <button type="button" onclick="create_excercise()">Submit</button>
-
-    </form>
+            <button class="add_box" onclick="assigned_workouts_view()" id="assign_color">
+                <p class="title">Send Clients their Workouts </p>
+             
+            </button>
 
 
+            <button class="add_box" onclick="assign_view()" id="assign_color">
+                <p class="title">View Assigned Workouts </p>
+             
+            </button>
 
-    <table class="profile_excercises_table">
-        <tr>
-            <th>Name</th>
-            <th>Rounds</th>
-            <th>Round Time</th>
-            <th>Rest</th>
-            <th>Link</th>
-            <th>Description</th>
+        </section>
     
-            <th>Delete</th>
-            <th>Edit</th>
-    
-    
-        </tr>
-      
-      
-            <% excercises.forEach(function(excercise) { %>
+
+        <section class="tables" id="tables">
+            <p class="title">Manage Clients/Exercises/Workouts</p>
+            <p class="sub_title">Select client,exercise, or workout table to edit, view, or delete clients.</p>
+          
+            <div class="select_table">
+
+                <button onclick="client_table()" >View Clients</button>
+                <button onclick="exercise_table()" >View Exercises</button>
+                <button onclick="workout_table()" >View Workouts</button>
+
+            </div>
+            <p class="current_table" id="current_table">Client Table</p>
+
+              <div class="table_container" id="client_table">
+                <table class="client_table">
+                    <tr>
+                        <th id="border_left">Name</th>
+                        <th>Height</th>
+                        <th>Weight</th>
+                        <th>Experience</th>
+                        <th>Phone Number</th>
+                        <th>Edit</th>
+                        <th id="border_right">Delete</th>
+                    </tr>
+
+                    <tr>
+                        <% clients.forEach(function(client) { %>
+                            <tr>
+               
+                                <td id="border_left"><p><img src="/icons/name.png" alt=""> <%= client.name %> </p></td>
+                      
+                                <td> <p><img src="/icons/height.png" alt=""> <%= client.height %> Inches </p></td>
+                      
+                                <td><p><img src="/icons/weight.png" alt=""><%= client.weight %> Lbs </p> </td>
+                                <td> <p> <img src="/icons/exp.png" alt=""><%= client.exp %> Years </p></td>
+                                <td><p><img src="/icons/phone.png" alt=""><%= client.phone %></p></td>
+                                <td>
+                                    <button onclick="edit_client('<%= client.c_id %>')"><img src="/icons/edit.png" alt=""> </button>
+                                  </td>
+                      
+                                <td id="border_right">
+                      
+                                <button  onclick="delete_client('<%= client.c_id %>','<%= csrf%>')"> <img src="/icons/delete.png" alt=""></button>
+                              </td>
+                            
+                           
+                              
+                              </tr>
+                              <% }) %>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="table_container" id="exercise_table">
+                <table class="exercise_table">
+                    <tr>
+                        <th id="border_left">Name</th>
+                        <th>Rounds</th>
+                        <th>Time</th>
+                        <th>Rest</th>
+                        <th>Link</th>
+                        <th>Description</th>
+                        <th>Edit</th>
+                        <th id="border_right">Delete</th>
+                    </tr>
+
+                    <tr>
+                        <% excercises.forEach(function(excercise) { %>
     
             
              
-             <tr>
+                            <tr>
+                              
+                             <td id="border_left"><%= excercise.name %></td>
+                             <td><%= excercise.rounds %></td>
+                             <td><%= excercise.time %></td>
+                             <td><%= excercise.rest %></td>
+                             <td><%= excercise.link %></td>
+                           
+                             <td><%= excercise.description %></td>
                
-              <td><%= excercise.name %></td>
-              <td><%= excercise.rounds %></td>
-              <td><%= excercise.time %></td>
-              <td><%= excercise.rest %></td>
-              <td><%= excercise.link %></td>
-            
-              <td><%= excercise.description %></td>
+                   
+                             
+                             <td>
+                                <button onclick="edit_excercise('<%= excercise.e_id %>')"> <img src="/icons/edit.png" alt=""> </button>
+                              </td>
+                   
+                             <td id="border_right">
+                   
+                             <button  onclick="delete_exercise('<%= excercise.e_id %>','<%= csrf %>')"><img src="/icons/delete.png" alt=""></button>
+                           </td>
+                          
+                        
+                           
+                           </tr>
+                           <% }) %>
 
-    
-              
-    
-              <td>
-    
-              <button  onclick="delete_exercise('<%= excercise.e_id %>','<%= csrf %>')">Delete Client</button>
-            </td>
-            <td>
-              <button onclick="edit_excercise('<%= excercise.e_id %>')"> Edit Client </button>
-            </td>
-         
-            
-            </tr>
-            <% }) %>
-     </table>
-    
+                    </tr>
+                </table>
+            </div>
 
-     <a href="/workout">create workout</a>
-
-    <table class="profile_workout_table">
-        <tr>
-        <th>Name</th>
-        <th>Delete</th>
-        <th>Edit</th>
-    </tr>
-
-
-
-        <% workouts.forEach(function(workout) { %>
-
-            <tr>
-            <td><%= workout.name %></td>
-            <td>
-    
-                <button  onclick="delete_workout('<%= workout.w_id %>')">Delete </button>
-              </td>
-              <td>
-                <button onclick="edit_workout('<%=workout.w_id %>')"> Edit </button>
-              </td>
-        </tr>
-        <% }) %>
-
+            <div class="table_container" id="Workout_table">
+                <table class="exercise_table">
+                    <tr>
+                        <th id="border_left">Name</th>
+                        <th>Edit</th>
+                        <th id="border_right">Delete</th>
+                      
+                    </tr>
+                
+                
+                
+                        <% workouts.forEach(function(workout) { %>
+                
+                            <tr>
+                            <td id="border_left"><%= workout.name %></td>
+                            <td>
+                                <button onclick="edit_workout('<%=workout.w_id %>')"> <img src="/icons/edit.png" alt=""> </button>
+                              </td>
+                            <td id="border_right">
+                    
+                                <button  onclick="delete_workout('<%= workout.w_id %>','<%= csrf %>')"><img src="/icons/delete.png" alt=""> </button>
+                              </td>
+                             
+                        </tr>
+                        <% }) %>
+                
+                        
+                
+                </table>
+            </div>
         
+        
+           
+
+        </section>
 
 
-    </table>
+        <section class="chart_frame">
+            <div class="title_box" id="title_box">
+    
+                <p class="title">Analytics</p>
+                <p class="sub_title">Use these graphs to help you make the best workouts for your clients. Click on a point/bar to view who that data point represents.</p>
+            </div>
+            <div class="chart">
+            <canvas id="height_weight_graph"></canvas>
+        </div>
+    
+        <div class="chart">
+            <canvas id="experience_graph"></canvas>
+        </div>
+    
+        <div class="chart">
+            <canvas id="round_time_graph"></canvas>
+        </div>
+    
+        <div class="chart">
+            <canvas id="height_graph"></canvas>
+        </div>
+    
+    
+        <div class="chart">
+            <canvas id="weight_graph"></canvas>
+        </div>
+    
+    
+        <div class="chart">
+            <canvas id="rounds_graph"></canvas>
+        </div>
+        </section>
 
-
-
+    </section>
+   
+    
+    <script src="/js/tables.js"></script>
     <script src="/js/client_requests.js"></script>
     <script src="/js/excercise_requests.js"></script>
     <script src="/js/workouts_requests.js"></script>
+    <script src="/js/redirect.js"></script>
+    <script src="/js/chart.js"></script>
 </body>
 </html>

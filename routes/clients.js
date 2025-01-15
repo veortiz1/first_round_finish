@@ -282,6 +282,51 @@ catch(err){
 })
 
 
+router.get("/clientStats", async(req,res)=>{
+
+    let weight=[];
+    let height=[];
+    let exp=[];
+    let name=[];
+    let exercise_name=[];
+    let rounds=[];
+    let time=[];
+
+
+    [results]= await db.query("select * from clients where u_id = ?",[req.session.u_id]);
+    for(let i = 0;i<results.length;i++){
+        weight.push(results[i].weight);
+        height.push(results[i].height);
+        name.push(results[i].name);
+        exp.push(results[i].exp);
+
+
+    }
+    [results1]=await db.query("select * from exercises where u_id=?",[req.session.u_id]);
+    for(let i =0;i<results1.length;i++){
+        exercise_name.push(results1[i].name);
+        rounds.push(results1[i].rounds);
+        time.push(results1[i].time);
+
+
+    }
+    console.log(weight,height,name,exp);
+
+    console.log(exercise_name,rounds,time);
+
+    return res.status(200).json({
+        name:name,
+        weight:weight,
+        height:height,
+        exp:exp,
+        exercise_name:exercise_name,
+        rounds:rounds,
+        time:time
+      });
+
+})
+
+
 
 
 

@@ -8,6 +8,7 @@ const clients = require('./routes/clients');
 const excercise = require('./routes/excercise');
 const workouts= require('./routes/workouts');
 
+const assign= require('./routes/assign');
 
 
 const session = require('express-session');
@@ -35,6 +36,7 @@ app.use('/login', login);
 app.use('/clients', clients);
 app.use('/excercise', excercise);
 app.use('/workouts', workouts);
+app.use('/assign', assign);
 
 
 
@@ -139,6 +141,32 @@ app.get("/workout", async(req,res)=>{
 
 })
 
+app.get("/assignView",async(req,res)=> {
+
+    try{
+        [results]=await db.query("select * from workouts where u_id=?",[req.session.u_id]);
+        [results1]= await db.query("select * from clients where u_id=?",[req.session.u_id]);
+        res.render("assign",{results:results,results1:results1});
+
+    }
+    catch(err){
+
+    }
+
+   
+})
+
+app.get("/assigned_workouts",async(req,res)=>{
+    try{
+    [results]=await db.query("select * from assigned_workouts where u_id = ? ", [req.session.u_id]);
+    [results1]= await db.query("select * from clients where u_id = ?",[req.session.u_id]);
+    res.render("assigned_workouts",{results:results,results1:results1});
+    }
+    catch(err){
+    console.log(err);
+    }
+})
+
 
 
 app.get("/edit_exercise", async(req,res) => {
@@ -164,7 +192,7 @@ app.get("/edit_workout", async(req,res) => {
 
         
 
-        res.render("edit_workout",{workout_name:results[0].name,exercises:results1});
+        res.render("edit_workout",{workout_name:results[0].name,exercises:results1,csrf:req.session.csrf});
 
     }
     catch(err){

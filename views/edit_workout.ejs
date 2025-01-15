@@ -9,6 +9,7 @@
 <body>
     <p>edit workout</p>
     <p><%= workout_name %></p>
+    <p class="error" id="workout_text"></p>
 
     <% exercises.forEach(function(exercise) { %>
 
@@ -21,7 +22,7 @@
         <p><%= exercise.link %></p>
         <p><%= exercise.description %></p>
         <button onclick="set_w_id('<%= exercise.we_id %>', '<%= exercise.name %>')">edit</button>
-        <button onclick="delete_from_workout('<%= exercise.we_id %>')">delete</button>
+        <button onclick="delete_from_workout('<%= exercise.we_id %>','<%= csrf %>')">delete</button>
 
     </div>
 
@@ -33,6 +34,7 @@
 
       <p id="currently_editing">Currently Editing no exercises</p>
 
+      <p class="error" id="edit_workout_exercise_error"></p>
 
       <form >
         <label for="e_name">Excercise Name:</label>
@@ -54,8 +56,9 @@
 
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" ><br><br>
+        <input type="hidden" value="<%= csrf %>" id="csrf_edit_workout_exercise">
 
-        <button type="button" onclick="edit_workout_exercise()">Submit</button>
+        <button type="button" onclick="edit_workout_exercise('<%= csrf %>')">Submit</button>
     </form>
 
 

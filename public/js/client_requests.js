@@ -42,7 +42,7 @@ async function create_client(){
             console.log("Client was added");
             document.getElementById("error").innerText="Client Added refresh page to see changes!";
             document.getElementById("error").style.color="green";
-            
+            window.location.href='/profile';
         }
     
     }
