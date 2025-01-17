@@ -10,13 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body id="client_view_body">
+    <p class="weekday_text" id="todays_workout">Monday's Workout</p>
+
+    <div class="button_frame">
+        <button id="create_workout" onclick="change_slide(2)">Previous Day</button>
+        <button id="create_workout" onclick="change_slide(1)">Next Day</button>
+    </div>
 
 
     <section id="assign_view_section">
 
-    <p class="weekday_text">Monday</p>
+    
 
-    <div class="weekday">
+    <div class="weekday" id="monday">
     <% for(let i = 0;i<monday.length;i++){ %>
         <div class="weekday_workout">
         <p>Exercise Name: <%= monday[i].name %></p>
@@ -26,18 +32,17 @@
        
         
     </div>
-    <p class="title">Video:</p>
+    <p class="title" id="red_text">Video:</p>
     <p> <%= monday[i].link %></p>
-    <p class="title"> Description:</p>
+    <p class="title" id="purple"> Description/Notes:</p>
     <p>Description: <%= monday[i].description %></p>
 
     <% } %>
 
     </div>
 
-
-    <p class="weekday_text">Tuesday</p>
-    <div class="weekday">
+  
+    <div class="weekday" id="tuesday">
         <% for(let i = 0; i < tuesday.length; i++) { %>
             <div class="weekday_workout">
                 <p>Exercise Name: <%= tuesday[i].name %></p>
@@ -45,14 +50,15 @@
                 <p>Time: <%= tuesday[i].time %></p>
                 <p>Rest: <%= tuesday[i].rest %></p>
             </div>
-            <p>Video: <%= tuesday[i].link %></p>
-            <p>Description: <%= tuesday[i].description %></p>
+            <p class="title" id="red_text">Video:</p>
+            <p><%= tuesday[i].link %></p>
+            <p class="title" id="purple">Description:</p>
+            <p><%= tuesday[i].description %></p>
         <% } %>
     </div>
 
-  
-    <p class="weekday_text">Wednesday</p>
-    <div class="weekday">
+
+    <div class="weekday" id="wednesday">
         <% for(let i = 0; i < wednesday.length; i++) { %>
             <div class="weekday_workout">
                 <p>Exercise Name: <%= wednesday[i].name %></p>
@@ -60,14 +66,15 @@
                 <p>Time: <%= wednesday[i].time %></p>
                 <p>Rest: <%= wednesday[i].rest %></p>
             </div>
-            <p>Video: <%= wednesday[i].link %></p>
-            <p>Description: <%= wednesday[i].description %></p>
+            <p class="title" id="red_text">Video:</p>
+            <p><%= wednesday[i].link %></p>
+            <p class="title" id="purple">Description:</p>
+            <p><%= wednesday[i].description %></p>
         <% } %>
     </div>
 
 
-    <p class="weekday_text">Thursday</p>
-    <div class="weekday">
+    <div class="weekday" id="thursday"> 
         <% for(let i = 0; i < thursday.length; i++) { %>
             <div class="weekday_workout">
                 <p>Exercise Name: <%= thursday[i].name %></p>
@@ -75,14 +82,15 @@
                 <p>Time: <%= thursday[i].time %></p>
                 <p>Rest: <%= thursday[i].rest %></p>
             </div>
-            <p>Video: <%= thursday[i].link %></p>
-            <p>Description: <%= thursday[i].description %></p>
+            <p class="title" id="red_text">Video:</p>
+            <p><%= thursday[i].link %></p>
+            <p class="title" id="purple">Description:</p>
+            <p><%= thursday[i].description %></p>
         <% } %>
     </div>
 
-
-    <p class="weekday_text">Friday</p>
-    <div class="weekday">
+    
+    <div class="weekday" id="friday">
         <% for(let i = 0; i < friday.length; i++) { %>
             <div class="weekday_workout">
                 <p>Exercise Name: <%= friday[i].name %></p>
@@ -90,14 +98,15 @@
                 <p>Time: <%= friday[i].time %></p>
                 <p>Rest: <%= friday[i].rest %></p>
             </div>
-            <p>Video: <%= friday[i].link %></p>
-            <p>Description: <%= friday[i].description %></p>
+            <p class="title" id="red_text">Video:</p>
+            <p><%= friday[i].link %></p>
+            <p class="title" id="purple">Description:</p>
+            <p><%= friday[i].description %></p>
         <% } %>
     </div>
 
-
-    <p class="weekday_text">Saturday</p>
-    <div class="weekday">
+   
+    <div class="weekday" id="saturday">
         <% for(let i = 0; i < saturday.length; i++) { %>
             <div class="weekday_workout">
                 <p>Exercise Name: <%= saturday[i].name %></p>
@@ -105,14 +114,15 @@
                 <p>Time: <%= saturday[i].time %></p>
                 <p>Rest: <%= saturday[i].rest %></p>
             </div>
-            <p>Video: <%= saturday[i].link %></p>
-            <p>Description: <%= saturday[i].description %></p>
+            <p class="title" id="red_text">Video:</p>
+            <p><%= saturday[i].link %></p>
+            <p class="title" id="purple">Description:</p>
+            <p><%= saturday[i].description %></p>
         <% } %>
     </div>
 
 
-    <p class="weekday_text">Sunday</p>
-    <div class="weekday">
+    <div class="weekday" id="sunday">
         <% for(let i = 0; i < sunday.length; i++) { %>
             <div class="weekday_workout">
                 <p>Exercise Name: <%= sunday[i].name %></p>
@@ -120,14 +130,18 @@
                 <p>Time: <%= sunday[i].time %></p>
                 <p>Rest: <%= sunday[i].rest %></p>
             </div>
-            <p>Video: <%= sunday[i].link %></p>
-            <p>Description: <%= sunday[i].description %></p>
+            <p class="title" id="red_text">Video:</p>
+            <p><%= sunday[i].link %></p>
+            <p class="title" id="purple">Description:</p>
+            <p><%= sunday[i].description %></p>
         <% } %>
     </div>
 
 </div>
 
 </section>
+
+<script src="/js/slides.js"></script>
 
     
 </body>
