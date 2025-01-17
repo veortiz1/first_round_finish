@@ -18,7 +18,7 @@ function add_to_workout(id){
     });
     if(dont_add==0){
         workouts.push(id)
-        document.getElementById("add_to_workout"+id).style.backgroundColor="yellow";
+        document.getElementById("add_to_workout"+id).style.backgroundColor="#4af44a";
     }
     else{
       workouts.splice(final_index,1)

@@ -28,6 +28,7 @@ app.use(session({
 
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -61,6 +62,8 @@ app.get('/register', (req,res) => {
  
  })
  
+
+
 
 
 
@@ -185,8 +188,8 @@ app.get("/edit_exercise", async(req,res) => {
 app.get("/edit_workout", async(req,res) => {
     try{
     
-        [results]= await db.query("select * from workouts where w_id=?",req.session.w_id);
-        [results1]= await db.query("select * from workout_exercises where w_id = ?",[req.session.w_id]);
+        let [results]= await db.query("select * from workouts where w_id=?",req.session.w_id);
+       let  [results1]= await db.query("select * from workout_exercises where w_id = ?",[req.session.w_id]);
         console.log(results1);
 
 
@@ -201,11 +204,39 @@ app.get("/edit_workout", async(req,res) => {
 
 })
 
+app.get("/client_example", async(req,res) =>{
+   
+    try{
+      let [results]= await db.query("select * from assigned_workouts where c_id = ?",[req.session.client_example]);
+
+     if(results.length ==0){
+        console.log("error");
+     }
+     else{
+        let [monday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].monday]);
+        let [tuesday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].tuesday]);
+        let [wednesday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].wednesday]);
+        let [thursday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].thursday]);
+        let [friday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].friday]);
+        let [saturday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].saturday]);
+        let [sunday]=await db.query("select * from workout_exercises where w_id = ?",[results[0].sunday]);
+        console.log(monday);
+        res.render("client_view",{monday:monday,tuesday:tuesday,wednesday:wednesday,thursday:thursday,friday:friday,saturday:saturday,sunday:sunday});
+
+     }
+     
+    }
+    catch(err){
+        console.log(err);
+    }
+})
+
 
 app.get("/test", async(req,res) => {
 
 res.render("edit_client");
 })
+
 
 
 

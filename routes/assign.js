@@ -44,5 +44,24 @@ router.post("/",async(req,res) => {
 })
 
 
+router.post("/get_workouts", async(req,res) =>{
+    let{id}=req.body;
+    try{
+        req.session.client_example=id;
+        return res.status(200).json({
+            success: true,
+            message: "client id set! ",
+          });
+    }
+    catch(err){
+        console.log("Error!"+ err);
+        return res.status(400).json({
+            success: false,
+            message: "Error adding Workouts! ",
+          });
+    }
+})
+
+
 
 module.exports=router;

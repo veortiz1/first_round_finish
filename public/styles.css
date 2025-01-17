@@ -1,6 +1,6 @@
 
 :root {
-  --body-font: 1.4rem;
+  --body-font: 1.2rem;
   --border-width:.3rem;
   --margin-html:3rem;
 }
@@ -294,6 +294,7 @@ font-size: var(--body-font);
 border: none;
 font-weight: 900;
 margin-bottom: 2rem;
+border-radius: 2rem;
 }
 
 label{
@@ -304,7 +305,9 @@ label{
 
 input{
   font-size: var(--body-font);
-  border: .1rem solid black;
+  border: none;
+  border-bottom: .2rem solid black;
+
   padding: 1rem;
 
 }
@@ -322,15 +325,19 @@ input{
 }
 
 .add_to_workout{
-  width: 20vw;
-  padding: 1rem;
-  background-color: white;
+
+ 
+  background-color: rgb(255, 255, 255);
   color: black;
   font-family: "Inter", serif;
+  
 font-size: var(--body-font);
-border: .1rem solid black;
-font-weight: 900;
+
+font-weight: 500;
+border: none;
+
 margin-bottom: 2rem;
+
 }
 
 #create_workout{
@@ -344,6 +351,7 @@ font-size: var(--body-font);
 border: none;
 font-weight: 900;
 margin-bottom: 2rem;
+border-radius: 2rem;
 }
 
 .exercises_in_create_workout{
@@ -352,6 +360,8 @@ margin-bottom: 2rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .goback{
@@ -364,6 +374,7 @@ font-size: var(--body-font);
 border: none;
 font-weight: 900;
 margin-bottom: 2rem;
+border-radius: 2rem;
 }
 
 .title_box{
@@ -389,4 +400,61 @@ margin-bottom: 2rem;
   justify-content: space-evenly;
   row-gap: 2rem;
 }
+
+#assign_body, #client_view_body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+#assign_view_section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#assign_section p{
+  font-size: var(--body-font);
+  font-weight: 900;
+}
+
+select{
+  width: 20vw;
+
+  background-color: rgb(255, 255, 255);
+  border-radius: .1px;
+  
+}
+
+
+.margin_top{
+  margin-top: 2rem;
+}
+
+.red{
+  background-color: red;
+}
+
+
+.weekday{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weekday_workout{
+  display: flex;
+  width: 90vw;
+  justify-content: space-evenly;
+  
+}
+
+.weekday_workout p{
+  font-weight: 100;
+}
+
+
+
+
 

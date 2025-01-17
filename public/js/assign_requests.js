@@ -40,4 +40,24 @@ async function assign(){
 async function get_workouts(){
   let client=document.getElementById("view_client").value;
   console.log(client);
+
+  const response = await fetch("/assign/get_workouts",{
+    method:"post",
+    headers:{
+        "Content-Type": "application/json"
+   },
+    body: JSON.stringify({id:client})
+
+})
+
+
+const data = await response.json();
+
+if(!response.ok){
+    console.log("error");
+}
+else{
+    window.location.href='/client_example';
+}
+
 }

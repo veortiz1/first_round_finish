@@ -9,9 +9,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="assign_body">
 
-    <p>assign deez</p>
+    <section class="top">
+        <p>User:Veortiz1</p>
+    
+        <button> <img src="/icons/Logout.png" alt=""></button>
+    </section>
+    <section id="assign_section">
+    <p>Whose workout is this?</p>
+    <select name="client_input" id="client_input">
+      <% for (let i = 0; i < results1.length; i++) { %>
+        <option value="<%= results1[i].c_id %>"><%= results1[i].name %></option>
+      <% } %>
+    </select>
+    
+
 
     <% const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']; %>
     <% for (let i = 0; i < days.length; i++) { %>
@@ -25,20 +38,17 @@
     <% } %>
 
 
-    <p>Which Clients Workouts are these?</p>
-    <select name="client_input" id="client_input">
-      <% for (let i = 0; i < results1.length; i++) { %>
-        <option value="<%= results1[i].c_id %>"><%= results1[i].name %></option>
-      <% } %>
-    </select>
-    
-
+   
    
 
 
 
-    <button onclick="assign()">Submit</button>
+    <button onclick="assign()" id="create_workout" class="margin_top">Assign Workouts</button>
+    <button onclick="assign()" id="create_workout" class="red">Go Back</button>
+</section>
         
 <script src="/js/assign_requests.js"></script>
+        
+<script src="/js/redirect.js"></script>
 </body>
 </html>
