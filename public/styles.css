@@ -5,7 +5,12 @@
   --border-width:.3rem;
   --margin-html:3rem;
   --border-width:.2rem;
+  --small_button_text:1rem;
+  --small_button_padding:.6rem;
   
+  --margin-between:2.5rem;
+
+  --box-font:1.25rem;
   
 }
 html{
@@ -24,10 +29,19 @@ body{
 
 .row_frame_space_between{
   display: flex;
-  width: 100vw;
+  width: 98vw;
   justify-content: space-between;
   flex-wrap: wrap;
   max-width: 93.75rem;
+}
+
+.row_frame_space_evenly{
+  display: flex;
+  width: 98vw;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  max-width: 93.75rem;
+  row-gap: var(--margin-between);
 }
 
 .title_text{
@@ -42,8 +56,91 @@ body{
   padding-top: 1rem;
   padding-bottom: 1rem;
   border-bottom: var(--border-width) solid #D6CA98;
+  padding-left: 1vw;
+  padding-right: 1vw;
 }
 
+.small_button{
+  font-size: var(--small_button_text);
+  padding: var(--small_button_padding);
+  font-family: "Inter", serif;
+  font-weight: 900;
+  border-radius: 3rem;
+
+
+}
+
+#red_button{
+  background-color: red;
+  color: white;
+  border: none;
+
+}
+
+.title_frame{
+
+  display: flex;
+  width: 98vw;
+
+  max-width: 91.875rem;
+  margin-top: var(--margin-between);
+  margin-bottom: var(--margin-between);
+  
+}
+
+
+.create_send_workout_box{
+  width: 20.9rem;
+  height: 15rem;
+
+  display: flex;
+  border: var(--border-width) solid #D6CA98;
+  padding: 1rem;
+
+}
+
+.create_send_workout_box_left{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+
+.create_send_workout_box_right{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.box_title{
+  font-size: var(--box-font);
+  font-weight: 900;
+  color: hsl(48, 43%, 72%);
+  text-align: center;
+}
+
+.box_body{
+  font-size: var(--box-font);
+  font-weight: 200;
+  color: hsl(48, 43%, 72%);
+  text-align: center;
+}
+
+.box_count{
+  font-size: var(--title-font);
+  font-weight:400;
+  color: #D6CA98;
+}
+
+#tan_button{
+  background-color: #D6CA98;
+  color: #655A7C;
+}
 
 
 
