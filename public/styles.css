@@ -441,17 +441,32 @@ select{
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90vw;
+  border: .2rem solid black;
+
 }
 
 .weekday_workout{
   display: flex;
   width: 90vw;
   justify-content: space-evenly;
+  background-color: black;
+
   
 }
 
+.weekday_text{
+  font-weight: 900;
+  font-size: 2rem;
+ 
+ 
+}
+
 .weekday_workout p{
-  font-weight: 100;
+  font-weight: 200;
+  color: white;
+
+ 
 }
 
 

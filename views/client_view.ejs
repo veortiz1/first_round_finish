@@ -14,7 +14,7 @@
 
     <section id="assign_view_section">
 
-    <p>Monday</p>
+    <p class="weekday_text">Monday</p>
 
     <div class="weekday">
     <% for(let i = 0;i<monday.length;i++){ %>
@@ -22,106 +22,110 @@
         <p>Exercise Name: <%= monday[i].name %></p>
         <p>Rounds:<%= monday[i].rounds %></p>
         <p>Time: <%= monday[i].time %></p>
-        <p><%= monday[i].rest %></p>
-        <p><%= monday[i].link %></p>
+        <p>Rest: <%= monday[i].rest %></p>
+       
         
     </div>
-    <p><%= monday[i].description %></p>
+    <p class="title">Video:</p>
+    <p> <%= monday[i].link %></p>
+    <p class="title"> Description:</p>
+    <p>Description: <%= monday[i].description %></p>
 
     <% } %>
 
     </div>
 
 
-    <!-- Tuesday -->
-    <p>Tuesday</p>
+    <p class="weekday_text">Tuesday</p>
     <div class="weekday">
         <% for(let i = 0; i < tuesday.length; i++) { %>
             <div class="weekday_workout">
-                <p><%= tuesday[i].name %></p>
-                <p><%= tuesday[i].rounds %></p>
-                <p><%= tuesday[i].time %></p>
-                <p><%= tuesday[i].rest %></p>
-                <p><%= tuesday[i].link %></p>
-                <p><%= tuesday[i].description %></p>
+                <p>Exercise Name: <%= tuesday[i].name %></p>
+                <p>Rounds: <%= tuesday[i].rounds %></p>
+                <p>Time: <%= tuesday[i].time %></p>
+                <p>Rest: <%= tuesday[i].rest %></p>
             </div>
+            <p>Video: <%= tuesday[i].link %></p>
+            <p>Description: <%= tuesday[i].description %></p>
         <% } %>
     </div>
 
-    <!-- Wednesday -->
-    <p>Wednesday</p>
+  
+    <p class="weekday_text">Wednesday</p>
     <div class="weekday">
         <% for(let i = 0; i < wednesday.length; i++) { %>
             <div class="weekday_workout">
-                <p><%= wednesday[i].name %></p>
-                <p><%= wednesday[i].rounds %></p>
-                <p><%= wednesday[i].time %></p>
-                <p><%= wednesday[i].rest %></p>
-                <p><%= wednesday[i].link %></p>
-                <p><%= wednesday[i].description %></p>
+                <p>Exercise Name: <%= wednesday[i].name %></p>
+                <p>Rounds: <%= wednesday[i].rounds %></p>
+                <p>Time: <%= wednesday[i].time %></p>
+                <p>Rest: <%= wednesday[i].rest %></p>
             </div>
+            <p>Video: <%= wednesday[i].link %></p>
+            <p>Description: <%= wednesday[i].description %></p>
         <% } %>
     </div>
 
-    <!-- Thursday -->
-    <p>Thursday</p>
+
+    <p class="weekday_text">Thursday</p>
     <div class="weekday">
         <% for(let i = 0; i < thursday.length; i++) { %>
             <div class="weekday_workout">
-                <p><%= thursday[i].name %></p>
-                <p><%= thursday[i].rounds %></p>
-                <p><%= thursday[i].time %></p>
-                <p><%= thursday[i].rest %></p>
-                <p><%= thursday[i].link %></p>
-                <p><%= thursday[i].description %></p>
+                <p>Exercise Name: <%= thursday[i].name %></p>
+                <p>Rounds: <%= thursday[i].rounds %></p>
+                <p>Time: <%= thursday[i].time %></p>
+                <p>Rest: <%= thursday[i].rest %></p>
             </div>
+            <p>Video: <%= thursday[i].link %></p>
+            <p>Description: <%= thursday[i].description %></p>
         <% } %>
     </div>
 
-    <!-- Friday -->
-    <p>Friday</p>
+
+    <p class="weekday_text">Friday</p>
     <div class="weekday">
         <% for(let i = 0; i < friday.length; i++) { %>
             <div class="weekday_workout">
-                <p><%= friday[i].name %></p>
-                <p><%= friday[i].rounds %></p>
-                <p><%= friday[i].time %></p>
-                <p><%= friday[i].rest %></p>
-                <p><%= friday[i].link %></p>
-                <p><%= friday[i].description %></p>
+                <p>Exercise Name: <%= friday[i].name %></p>
+                <p>Rounds: <%= friday[i].rounds %></p>
+                <p>Time: <%= friday[i].time %></p>
+                <p>Rest: <%= friday[i].rest %></p>
             </div>
+            <p>Video: <%= friday[i].link %></p>
+            <p>Description: <%= friday[i].description %></p>
         <% } %>
     </div>
 
-    <!-- Saturday -->
-    <p>Saturday</p>
+
+    <p class="weekday_text">Saturday</p>
     <div class="weekday">
         <% for(let i = 0; i < saturday.length; i++) { %>
             <div class="weekday_workout">
-                <p><%= saturday[i].name %></p>
-                <p><%= saturday[i].rounds %></p>
-                <p><%= saturday[i].time %></p>
-                <p><%= saturday[i].rest %></p>
-                <p><%= saturday[i].link %></p>
-                <p><%= saturday[i].description %></p>
+                <p>Exercise Name: <%= saturday[i].name %></p>
+                <p>Rounds: <%= saturday[i].rounds %></p>
+                <p>Time: <%= saturday[i].time %></p>
+                <p>Rest: <%= saturday[i].rest %></p>
             </div>
+            <p>Video: <%= saturday[i].link %></p>
+            <p>Description: <%= saturday[i].description %></p>
         <% } %>
     </div>
 
-    <!-- Sunday -->
-    <p>Sunday</p>
+
+    <p class="weekday_text">Sunday</p>
     <div class="weekday">
         <% for(let i = 0; i < sunday.length; i++) { %>
             <div class="weekday_workout">
-                <p><%= sunday[i].name %></p>
-                <p><%= sunday[i].rounds %></p>
-                <p><%= sunday[i].time %></p>
-                <p><%= sunday[i].rest %></p>
-                <p><%= sunday[i].link %></p>
-                <p><%= sunday[i].description %></p>
+                <p>Exercise Name: <%= sunday[i].name %></p>
+                <p>Rounds: <%= sunday[i].rounds %></p>
+                <p>Time: <%= sunday[i].time %></p>
+                <p>Rest: <%= sunday[i].rest %></p>
             </div>
+            <p>Video: <%= sunday[i].link %></p>
+            <p>Description: <%= sunday[i].description %></p>
         <% } %>
     </div>
+
+</div>
 
 </section>
 
