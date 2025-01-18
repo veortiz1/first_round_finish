@@ -188,11 +188,14 @@ table,#workout_table,#exercise_table,#client_table{
   font-size: 1rem;
   margin: 0;
   padding: 0;
-  background-color: #EBEBEB;
+  background-color: #D6CA98;
+  
 }
 tr{
   width: 98vw;
   max-width: 91.875rem;
+
+ 
 
   margin: 0;
 
