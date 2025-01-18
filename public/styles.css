@@ -32,7 +32,7 @@ body{
   width: 98vw;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 93.75rem;
+  max-width: 91.875rem;
 }
 
 .row_frame_space_evenly{
@@ -40,7 +40,7 @@ body{
   width: 98vw;
   justify-content: space-evenly;
   flex-wrap: wrap;
-  max-width: 93.75rem;
+  max-width: 91.875rem;
   row-gap: var(--margin-between);
 }
 
@@ -66,6 +66,7 @@ body{
   font-family: "Inter", serif;
   font-weight: 900;
   border-radius: 3rem;
+  border: none;
 
 
 }
@@ -89,18 +90,25 @@ body{
 }
 
 
-.create_send_workout_box{
+.create_send_workout_box,.chart_box{
   width: 20.9rem;
+
   height: 15rem;
 
   display: flex;
   border: var(--border-width) solid #D6CA98;
   padding: 1rem;
+  border-radius: 1.5rem;
 
 }
 
+.chart_box{
+  background-color: #D6CA98;
+}
+
 .create_send_workout_box_left{
-  width: 50%;
+  width: 10.45rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -109,7 +117,8 @@ body{
 }
 
 .create_send_workout_box_right{
-  width: 50%;
+  width: 10.45rem;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -122,6 +131,7 @@ body{
   font-weight: 900;
   color: hsl(48, 43%, 72%);
   text-align: center;
+  margin: 0;
 }
 
 .box_body{
@@ -129,18 +139,208 @@ body{
   font-weight: 200;
   color: hsl(48, 43%, 72%);
   text-align: center;
+  margin: 0;
 }
 
 .box_count{
   font-size: var(--title-font);
-  font-weight:400;
-  color: #D6CA98;
+  font-weight:900;
+  color: #655A7C;
+  background-color: #D6CA98;
+  padding: 1rem;
+  border-radius: 50%;
+  text-shadow: 0 0 25px #655A7C;
+  margin: 0;
 }
 
 #tan_button{
   background-color: #D6CA98;
   color: #655A7C;
 }
+
+.choose_table_buttons{
+  width: 50vw;
+  max-width: 46.875rem;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: var(--margin-between);
+}
+
+.tables{
+  display: flex;
+  width: 98vw;
+  height: 30rem;
+
+  max-width: 91.875rem;
+  margin-bottom: var(--margin-between);
+  overflow: scroll;
+  border-radius: 3rem;
+  background-color: #D6CA98;
+}
+
+table,#workout_table,#exercise_table,#client_table{
+  max-width: 91.875rem;
+  width: 98vw;
+  margin: 0;
+ 
+
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  background-color: #EBEBEB;
+}
+tr{
+  width: 98vw;
+  max-width: 91.875rem;
+
+  margin: 0;
+
+
+}
+
+th{
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  font-family: "Inter", serif;
+  font-weight: 900;
+  text-align: center;
+ 
+  background-color: #D6CA98;
+  color:#655A7C;
+  padding: 1rem;
+ 
+
+  
+ 
+}
+
+
+
+td{
+  margin: 0;
+  padding: 0;
+  font-weight: 200;
+  text-align: left;
+
+  text-align: center;
+  background-color: #D6CA98;
+  color: #655A7C;
+
+  font-style: italic;
+  
+}
+
+td img{
+  width: 2vw;
+}
+td button{
+  background: none;
+  border: none;
+}
+
+#exercise_table{
+  display: none;
+}
+
+#workout_table{
+  display: none;
+}
+
+
+
+
+@media (min-width: 930px) and (max-width: 1280px) {
+  .create_send_workout_box,.chart_box{
+    width: 25rem;
+  
+    height: 17rem;
+  
+    display: flex;
+    justify-content: space-evenly;
+    border: var(--border-width) solid #D6CA98;
+    padding: 1rem;
+  
+  }
+  
+  .create_send_workout_box_left{
+    width: 9.5rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  
+  }
+  
+  .create_send_workout_box_right{
+    width: 9.5rem;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  
+  }
+}
+
+
+
+@media (min-width: 300px ) and (max-width:929px) {
+  :root {
+    --title-font:1.5rem;
+    --body-font: 1.2rem;
+    --border-width:.3rem;
+    --margin-html:3rem;
+    --border-width:.2rem;
+    --small_button_text:clamp(0.8rem, 0.705rem + 0.509vw, 1rem);
+    --small_button_padding:.6rem;
+    
+    --margin-between:2.5rem;
+  
+    --box-font:1.25rem;
+    
+  }
+  .create_send_workout_box,.chart_box{
+    width: 15rem;
+    width: 35rem;
+    
+    width: 15rem;
+    width: clamp(15rem, 5.461rem + 50.874vw, 35rem);
+    height: 17rem;
+  
+    display: flex;
+    justify-content: space-evenly;
+    border: var(--border-width) solid #D6CA98;
+    padding: 1rem;
+  
+  }
+  
+  .create_send_workout_box_left{
+    width: 7.5rem;
+    width: clamp(7.5rem, 2.731rem + 25.437vw, 17.5rem);
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  
+  }
+  
+  .create_send_workout_box_right{
+    width: 5rem;
+    width: clamp(7.5rem, 2.731rem + 25.437vw, 17.5rem);
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  
+  }
+}
+
+
 
 
 

@@ -16,7 +16,7 @@
         <button class="small_button" id="red_button">Logout</button>
 
     </section>
-    <section class="row_frame_space_evenly" id="create_send_workouts"></section>
+
 
     <div class="title_frame">
         <p class="title_text">Create and Send Workouts </p>
@@ -93,9 +93,181 @@
     </section>
 
 
-   
+    <div class="title_frame">
+        <p class="title_text">Data </p>
+    </div>
+
+    <section class="row_frame_space_evenly" id="chart_frame">
+      
+        <div class="chart_box">
+        <canvas id="height_weight_graph"></canvas>
+    </div>
+
+    <div class="chart_box">
+        <canvas id="experience_graph"></canvas>
+    </div>
+
+    <div class="chart_box">
+        <canvas id="round_time_graph"></canvas>
+    </div>
+
+    <div class="chart_box">
+        <canvas id="height_graph"></canvas>
+    </div>
+
+
+    <div class="chart_box">
+        <canvas id="weight_graph"></canvas>
+    </div>
+
+
+    <div class="chart_box">
+        <canvas id="rounds_graph"></canvas>
+    </div>
+    </section>
+
+    <div class="title_frame">
+        <p class="title_text">Manage Clients/Workouts Exercises </p>
+    </div>
+
+
+    <section class="choose_table_buttons">
+        <button class="small_button" id="tan_button" onclick="client_table()">Clients</button>
+        <button class="small_button" id="tan_button" onclick="exercise_table()">Exercises</button>
+        <button class="small_button" id="tan_button" onclick="workout_table()">Workouts</button>
+    </section>
+
+
+    <section class="tables">
+        <table id="client_table">
+            <tr>
+                <th id="border_left">Name</th>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>Experience</th>
+                <th>Phone Number</th>
+                <th>Edit</th>
+                <th id="border_right">Delete</th>
+            </tr>
+
+            <tr>
+                <% clients.forEach(function(client) { %>
+                    <tr>
+       
+                        <td id="border_left"><p><img src="/icons/name.png" alt=""> <%= client.name %> </p></td>
+              
+                        <td> <p><img src="/icons/height.png" alt=""> <%= client.height %> Inches </p></td>
+              
+                        <td><p><img src="/icons/weight.png" alt=""><%= client.weight %> Lbs </p> </td>
+                        <td> <p> <img src="/icons/exp.png" alt=""><%= client.exp %> Years </p></td>
+                        <td><p><img src="/icons/phone.png" alt=""><%= client.phone %></p></td>
+                        <td>
+                            <button onclick="edit_client('<%= client.c_id %>')"><img src="/icons/edit.png" alt=""> </button>
+                          </td>
+              
+                        <td id="border_right">
+              
+                        <button  onclick="delete_client('<%= client.c_id %>','<%= csrf%>')"> <img src="/icons/delete.png" alt=""></button>
+                      </td>
+                    
+                   
+                      
+                      </tr>
+                      <% }) %>
+
+            </tr>
+        </table>
+
+        <table id="exercise_table">
+            <tr>
+                <th id="border_left">Name</th>
+                <th>Rounds</th>
+                <th>Time</th>
+                <th>Rest</th>
+                <th>Link</th>
+                <th>Description</th>
+                <th>Edit</th>
+                <th id="border_right">Delete</th>
+            </tr>
+
+            <tr>
+                <% excercises.forEach(function(excercise) { %>
+
+    
+     
+                    <tr>
+                      
+                     <td id="border_left"><%= excercise.name %></td>
+                     <td><%= excercise.rounds %></td>
+                     <td><%= excercise.time %></td>
+                     <td><%= excercise.rest %></td>
+                     <td><%= excercise.link %></td>
+                   
+                     <td><%= excercise.description %></td>
+       
+           
+                     
+                     <td>
+                        <button onclick="edit_excercise('<%= excercise.e_id %>')"> <img src="/icons/edit.png" alt=""> </button>
+                      </td>
+           
+                     <td id="border_right">
+           
+                     <button  onclick="delete_exercise('<%= excercise.e_id %>','<%= csrf %>')"><img src="/icons/delete.png" alt=""></button>
+                   </td>
+                  
+                
+                   
+                   </tr>
+                   <% }) %>
+
+            </tr>
+        </table>
+
+        <table id="workout_table">
+            <tr>
+                <th id="border_left">Name</th>
+                <th>Edit</th>
+                <th id="border_right">Delete</th>
+              
+            </tr>
+        
+        
+        
+                <% workouts.forEach(function(workout) { %>
+        
+                    <tr>
+                    <td id="border_left"><%= workout.name %></td>
+                    <td>
+                        <button onclick="edit_workout('<%=workout.w_id %>')"> <img src="/icons/edit.png" alt=""> </button>
+                      </td>
+                    <td id="border_right">
+            
+                        <button  onclick="delete_workout('<%= workout.w_id %>','<%= csrf %>')"><img src="/icons/delete.png" alt=""> </button>
+                      </td>
+                     
+                </tr>
+                <% }) %>
+        
+                
+        
+        </table>
+
+
+
+    </section>
+
+
+    <script src="/js/tables.js"></script>
+    <script src="/js/client_requests.js"></script>
+    <script src="/js/excercise_requests.js"></script>
+    <script src="/js/workouts_requests.js"></script>
+    <script src="/js/redirect.js"></script>
+    <script src="/js/chart.js"></script>
 
    
+
+ 
 
     
 </body>

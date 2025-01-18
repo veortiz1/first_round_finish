@@ -82,7 +82,7 @@ new Chart(graph1, {
     datasets: [{
       label: 'Client Height/Weight',
       data: height_weight, 
-      backgroundColor: 'black', 
+      backgroundColor: '#655A7C', 
     }]
   },
   options: {
@@ -114,7 +114,7 @@ new Chart(graph2,{
         datasets:[{
         label: 'Client Experience',
         data:exp,
-        backgroundColor:"orange"
+        backgroundColor:'#655A7C'
         }]
             
         
@@ -147,7 +147,7 @@ new Chart(graph3, {
       datasets: [{
         label: 'Exercise Round/Time',
         data: round_time, 
-        backgroundColor: 'red', 
+        backgroundColor: '#655A7C', 
       }]
     },
     options: {
@@ -180,7 +180,7 @@ new Chart(graph4,{
         datasets:[{
         label: 'Client Height',
         data:height,
-        backgroundColor:"green"
+        backgroundColor:'#655A7C'
         }]
             
         
@@ -214,7 +214,7 @@ new Chart(graph5,{
         datasets:[{
         label: 'Weight Graph',
         data:weight,
-        backgroundColor:"purple"
+        backgroundColor:'#655A7C'
         }]
             
         
@@ -246,7 +246,7 @@ new Chart(graph6,{
         datasets:[{
         label: 'Rounds Per Exercise',
         data:rounds,
-        backgroundColor:"pink"
+        backgroundColor:'#655A7C'
         }]
             
         
