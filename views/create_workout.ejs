@@ -23,7 +23,7 @@
 
 
     <p class="title_text">Create Workout</p>
-    <img src="/icons/workout.png" alt="">
+    <img src="/icons/workout.png" class="add_icon" alt="">
     <p class="sub_title">Enter workout name and select exercises you would like to add to the workout.</p>
  
 
@@ -44,9 +44,9 @@
     <% }) %>
 </div>
 
-
+<p class="error" id="create_workout_error"></p>
     <button onclick="create_workout('<%=csrf%>')" class="small_button" id="tan_button" >Create Workout</button>
-    <p class="error" id="create_workout_error"></p>
+
 
 
     
