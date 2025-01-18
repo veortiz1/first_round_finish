@@ -18,11 +18,14 @@ function add_to_workout(id){
     });
     if(dont_add==0){
         workouts.push(id)
-        document.getElementById("add_to_workout"+id).style.backgroundColor="#4af44a";
+        document.getElementById("add_to_workout"+id).style.backgroundColor="#D6CA98";
+        document.getElementById("add_to_workout"+id).style.color="#655A7C";
+        
     }
     else{
       workouts.splice(final_index,1)
-      document.getElementById("add_to_workout"+id).style.backgroundColor="white";
+      document.getElementById("add_to_workout"+id).style.backgroundColor="#655A7C";
+      document.getElementById("add_to_workout"+id).style.color="#D6CA98";
     }
 
     console.log(workouts);

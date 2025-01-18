@@ -215,11 +215,11 @@ th{
   font-weight: 900;
   text-align: center;
  
-  background-color: #655A7C;
+  background-color: #D6CA98;
   color:#D6CA98;
   padding: 1rem;
   font-size: var(--table-font);
-  border: var(--border-width) solid #D6CA98;
+
   background-color: #D6CA98;
   color: #655A7C;
  
@@ -314,7 +314,31 @@ input::placeholder{
   display: none;
 }
 
+.exercises_in_create_workout{
+  width: 75vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
+}
+
+#create_client_body{
+  gap: var(--margin-between);
+}
+
+.purple_button{
+
+  font-size: var(--small_button_text);
+  padding: var(--small_button_padding);
+  font-family: "Inter", serif;
+  font-weight: 900;
+ 
+  border: none;
+  background-color: #655A7C;
+  border: var(--border-width) solid #D6CA98;
+  color: #D6CA98;
+  
+}
 
 @media (min-width: 930px) and (max-width: 1280px) {
   .create_send_workout_box,.chart_box{

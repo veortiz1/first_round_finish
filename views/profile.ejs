@@ -142,7 +142,7 @@
             <div class="create_send_workout_box_left">
                 <p class="box_title">Total Workouts</p>
                 <p class="box_count">21</p>
-                <p class="small_button" id="tan_button">Create Workout</p>
+                <button class="small_button" id="tan_button" onclick="add_workout_view()">Create Workout</button>
 
             </div>
             <div class="create_send_workout_box_right">
@@ -238,7 +238,7 @@
                 <th>Edit</th>
                 <th id="border_right">Delete</th>
             </tr>
-
+            
             <tr>
                 <% clients.forEach(function(client) { %>
                     <tr>

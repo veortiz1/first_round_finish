@@ -9,40 +9,44 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <section class="manage_frame">
-    <section class="top">
-        <p>User:Veortiz1</p>
-    
-        <button> <img src="/icons/Logout.png" alt=""></button>
+<body id="create_client_body">
+    <section class="row_frame_space_between" id="username_and_logout"> 
+        <p class="title_text">Veortiz1</p>
+        <button class="small_button" id="red_button">Logout</button>
+
     </section>
 
 
-    <p class="title">Create Workout</p>
+
+
+    <button onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
+
+
+    <p class="title_text">Create Workout</p>
+    <img src="/icons/workout.png" alt="">
     <p class="sub_title">Enter workout name and select exercises you would like to add to the workout.</p>
-    <p class="error" id="create_workout_error"></p>
-    <p class="error" id="create_workout_error"></p>
+ 
 
-    <p class="title">Workout Name</p>
 
-    <input type="text" id="workout_name" name="workout_name" placeholder="Workout Name"><br><br>
+
+
+    <input type="text" id="workout_name" name="workout_name" placeholder="Workout Name">
 
    
-    <p class="title">Exercises</p>
+    <p class="title_text">Exercises</p>
     <p class="sub_title">Click on them to add to workout</p>
     <div class="exercises_in_create_workout">
  
     <% results.forEach(function(result) { %>
 
-        <button onclick="add_to_workout('<%= result.e_id %>')" id="add_to_workout<%= result.e_id %>" class="add_to_workout"><%= result.name %></button>
+        <button onclick="add_to_workout('<%= result.e_id %>')" id="add_to_workout<%= result.e_id %>"  class="purple_button"><%= result.name %></button>
        
     <% }) %>
 </div>
 
 
-    <button onclick="create_workout('<%=csrf%>')" id="create_workout">Create Workout</button>
-
-    <button onclick="add_client_home()" class="goback" id="red">Go Back</button>
+    <button onclick="create_workout('<%=csrf%>')" class="small_button" id="tan_button" >Create Workout</button>
+    <p class="error" id="create_workout_error"></p>
 
 
     
