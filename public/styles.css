@@ -11,6 +11,8 @@
   --margin-between:2.5rem;
 
   --box-font:1.25rem;
+  --table-font:1rem;
+  --form-margin:1rem
   
 }
 html{
@@ -174,13 +176,14 @@ body{
   max-width: 91.875rem;
   margin-bottom: var(--margin-between);
   overflow: scroll;
-  border-radius: 3rem;
-  background-color: #D6CA98;
+ 
+  background-color: #655A7C;
+  border-bottom: var(--border-width) solid #D6CA98;
 }
 
 table,#workout_table,#exercise_table,#client_table{
-  max-width: 91.875rem;
-  width: 98vw;
+ 
+  width: 100%;
   margin: 0;
  
 
@@ -188,7 +191,8 @@ table,#workout_table,#exercise_table,#client_table{
   font-size: 1rem;
   margin: 0;
   padding: 0;
-  background-color: #D6CA98;
+  background-color: #655A7C;
+  overflow: scroll;
   
 }
 tr{
@@ -198,6 +202,7 @@ tr{
  
 
   margin: 0;
+
 
 
 }
@@ -210,9 +215,14 @@ th{
   font-weight: 900;
   text-align: center;
  
-  background-color: #D6CA98;
-  color:#655A7C;
+  background-color: #655A7C;
+  color:#D6CA98;
   padding: 1rem;
+  font-size: var(--table-font);
+  border: var(--border-width) solid #D6CA98;
+  background-color: #D6CA98;
+  color: #655A7C;
+ 
  
 
   
@@ -232,11 +242,20 @@ td{
   color: #655A7C;
 
   font-style: italic;
+  max-width: 15ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: var(--body-font);
+  font-size: var(--table-font);
+  border: var(--border-width) solid #D6CA98;
+  background-color: #655A7C;
+  color: #D6CA98;
   
 }
 
 td img{
-  width: 2vw;
+  width: 2rem;
 }
 td button{
   background: none;
@@ -251,6 +270,49 @@ td button{
   display: none;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+
+}
+
+input{
+  border: none;
+  border-bottom: var(--border-width) solid #D6CA98;
+  color: #D6CA98;
+  background-color: #655A7C;
+  font-size: var(--body-font);
+}
+
+input::placeholder{
+  color: #D6CA98;
+  font-style: italic;
+  font-weight: 100;
+}
+
+.sub_title{
+  margin: 0;
+  font-size: var(--body-font);
+  color: #D6CA98;
+  font-weight: 200;
+  width: 50vw;
+  text-align: center;
+}
+
+#margin_top{
+  margin-top: var(--margin-between);
+}
+
+
+#add_client{
+  display: none;
+}
+
+#add_exercise{
+  display: none;
+}
 
 
 

@@ -11,22 +11,34 @@ function assign_view(){
 }
 function add_client_view(){
 
-    document.getElementById("add").style.display="none";
-
+    document.getElementById("create_send_workouts").style.display="none";
+    document.getElementById("chart_frame").style.display="none";
+    document.getElementById("choose_table_buttons").style.display="none";
     document.getElementById("tables").style.display="none";
+
+    let titles = document.querySelectorAll(".title_frame");
+    for(let i=0;i<titles.length;i++){
+        titles[i].style.display="none";
+    }
+
     document.getElementById("add_client").style.display="flex";
-    document.getElementById("title_box").style.display="none";
+
 
 }
 
 function add_exercise_view(){
 
-    document.getElementById("add").style.display="none";
-
+    document.getElementById("create_send_workouts").style.display="none";
+    document.getElementById("chart_frame").style.display="none";
+    document.getElementById("choose_table_buttons").style.display="none";
     document.getElementById("tables").style.display="none";
-    document.getElementById("add_exercise").style.display="flex";
 
-    document.getElementById("title_box").style.display="none";
+    let titles = document.querySelectorAll(".title_frame");
+    for(let i=0;i<titles.length;i++){
+        titles[i].style.display="none";
+    }
+
+    document.getElementById("add_exercise").style.display="flex";
 
 }
 

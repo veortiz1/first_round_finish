@@ -18,6 +18,94 @@
     </section>
 
 
+    
+
+    <section class="add_client" id="add_client">
+        <form id="add_client_form">
+   
+            <br>
+            <button type="button" onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
+            <p class="title_text">Add Client</p>
+            <img src="/icons/client.png" alt="">
+            <p class="sub_title">*Only Name is required. Height,weight,experience, can only be numbers or decimals. Phone must be in fromat 1234567890(no dashes or symbols only numbers).</p>
+          
+
+
+           
+           
+            <input type="text" id="name" name="name" placeholder="Name" >
+    
+    
+        
+           
+            <input type="text" id="height" name="height" placeholder="Height (Optional)" >
+       
+    
+       
+            <input type="text" id="weight" name="weight" placeholder="Weight  (Optional)">
+    
+    
+     
+          
+            <input type="text" id="experience" name="experience" placeholder="Experience  (Optional)"> 
+
+      
+
+            <input type="hidden" id="csrf_add" value="<%= csrf %>">
+    
+    
+    
+       
+            <input type="text" id="phone" name="phone" required placeholder="Phone Number  (Optional)">
+  
+    
+            
+            <button type="button" onclick="create_client()" class="small_button" id="tan_button">Add Client</button>
+            <p id="error"></p>
+
+        </form>
+    </section>
+
+
+    <section class="add_exercise" id="add_exercise">
+        <form id="add_excercise_form">
+            <br>
+            <button type="button" onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
+            <p class="title_text">Add Exercise</p>
+            <img src="/icons/exercise.png" alt="">
+            <p class="sub_title">Enter exercise information, you can edit it later, name,rounds,time,and rest are required to create an exercise.</p>
+           
+            
+            <input type="text" id="e_name" name="e_name" required placeholder="Exercise Name">
+    
+         
+            <input type="text" id="rounds" name="rounds" required placeholder="Rounds">
+    
+       
+            <input type="text" id="time" name="time" required placeholder="Time (in Seconds)">
+    
+       
+            <input type="text" id="rest" name="rest" required placeholder="Rest (in Seconds) ">
+    
+           
+            <input type="text" id="link" name="link" placeholder="Youtube Link (Optional)" >
+    
+    
+    
+          
+            <input type="text" id="description" name="description" placeholder="Description (300 word limit) (Optional)">
+    
+            <input type="hidden" id="csrf_add" value="<%= csrf %>">
+    
+            <button type="button" onclick="create_excercise()" class="small_button" id="tan_button">Add Exercise</button>
+            <p class="error" id="error1"></p>
+         
+    
+        </form>
+
+    </section>
+
+
     <div class="title_frame">
         <p class="title_text">Create and Send Workouts </p>
     </div>
@@ -28,7 +116,7 @@
             <div class="create_send_workout_box_left">
                 <p class="box_title">Total Clients</p>
                 <p class="box_count">21</p>
-                <p class="small_button" id="tan_button">Create Client</p>
+                <button class="small_button" id="tan_button" onclick="add_client_view()">Create Client</button>
 
             </div>
             <div class="create_send_workout_box_right">
@@ -41,7 +129,7 @@
             <div class="create_send_workout_box_left">
                 <p class="box_title">Total Exercises</p>
                 <p class="box_count">21</p>
-                <p class="small_button" id="tan_button">Create Exercise</p>
+                <button class="small_button" id="tan_button" onclick="add_exercise_view()">Create Exercise</button>
 
             </div>
             <div class="create_send_workout_box_right">
@@ -67,7 +155,7 @@
             <div class="create_send_workout_box_left">
                 <p class="box_title">Assign Workouts</p>
                 <p class="box_body">Assign workout's to your clients.</p>
-                <p class="small_button" id="tan_button">Create Workout</p>
+                <p class="small_button" id="tan_button">Assign Workout</p>
 
             </div>
             <div class="create_send_workout_box_right">
@@ -131,14 +219,14 @@
     </div>
 
 
-    <section class="choose_table_buttons">
+    <section class="choose_table_buttons" id="choose_table_buttons">
         <button class="small_button" id="tan_button" onclick="client_table()">Clients</button>
         <button class="small_button" id="tan_button" onclick="exercise_table()">Exercises</button>
         <button class="small_button" id="tan_button" onclick="workout_table()">Workouts</button>
     </section>
 
 
-    <section class="tables">
+    <section class="tables" id="tables">
         <div id="client_table">
         <table >
             <tr>
@@ -194,7 +282,7 @@
                 <th id="border_right">Delete</th>
             </tr>
 
-            <tr>
+           
                 <% excercises.forEach(function(excercise) { %>
 
     
@@ -225,7 +313,7 @@
                    </tr>
                    <% }) %>
 
-            </tr>
+           
         </table>
     </div>
 
