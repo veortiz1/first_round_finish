@@ -5,48 +5,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body id="create_client_body">
 
+    <section class="row_frame_space_between" id="username_and_logout"> 
+        <p class="title_text">Veortiz1</p>
+        <button class="small_button" id="red_button">Logout</button>
+
+    </section>
 
 
-    <p id="edit_name">Current Name: <%= name %></p>
-    <p id="edit_height">Current Height: <%= height %></p>
-    <p id="edit_weight">Current Weight: <%= weight %></p>
-    <p id="edit_phone">Current Phone: <%= phone %></p>
-    <p id="edit_experience">Current Experience<%= experience %></p>
-    <p>Id: <%= id %></p>
+    <button onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
 
-    <p>If you don't want to change a value just leave field empty!</p>
+
+
+    <p class="title_text">Edit Client</p>
+    <img src="/icons/edit.png" class="add_icon" alt="">
+
+ 
+   
+    <p id="edit_name" class="edit_text"><span class="category">Current Name: </span><%= name %></p>
+    <p id="edit_height" class="edit_text"> <span class="category">Current Height: </span><%= height %></p>
+    <p id="edit_weight" class="edit_text"><span class="category">Current Weight: </span><%= weight %></p>
+    <p id="edit_phone" class="edit_text"> <span class="category">Current Phone: </span><%= phone %></p>
+    <p id="edit_experience" class="edit_text"><span class="category">Current Experience: </span><%= experience %></p>
+ 
+
+    <p class="edit_text" id="ninehundred">*If you don't want to change a value just leave field empty!</p>
 
 
 
     <form  method="POST" id="edit_client_form"> 
 
-        <p id="error"></p>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name"><br><br>
+  
+      
+        <input type="text" id="name" name="name" placeholder="Name">
 
-        <label for="height">Height (in cm):</label>
-        <input type="text" id="height" name="height" ><br><br>
+      
+        <input type="text" id="height" name="height" placeholder="Height">
 
-        <label for="weight">Weight (in kg):</label>
-        <input type="text" id="weight" name="weight" ><br><br>
+        <input type="text" id="weight" name="weight" placeholder="Weight">
 
-        <label for="experience">Years of Experience:</label>
-        <input type="text" id="experience" name="experience" ><br><br>
+        <input type="text" id="experience" name="experience" placeholder="Experience" >
 
-        <label for="phone">Phone Number:</label>
-        <input type="text" id="phone" name="phone" required><br><br>
+        <input type="text" id="phone" name="phone" required placeholder="Phone">
 
         <input type="hidden" id="csrf_add_edit" value="<%= csrf %>">
 
-        <button type="button" onclick="edit_client_form()">Submit</button>
+        <button type="button" onclick="edit_client_form()" class="small_button" id="tan_button">Confirm Edits </button>
+        <p id="error"></p>
     </form>
 
 
     
 
     <script src="/js/client_requests.js"></script>
+    <script src="/js/redirect.js"></script>
+
 </body>
 </html>

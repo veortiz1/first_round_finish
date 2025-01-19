@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <p id="edit_exercise_name">Current Name: <%= name %></p>
-    <p id="edit_rounds">Current Rounds: <%= rounds %></p>
-    <p id="edit_time">Current Time: <%= time %></p>
-    <p id="edit_rest">Current Rest: <%= rest %></p>
-    <p id="edit_link">Current Link: <%= link %></p>
-    <p id="edit_description">Current Description: <%= description %></p>
+<body id="create_client_body">
+
+    <section class="row_frame_space_between" id="username_and_logout"> 
+        <p class="title_text">Veortiz1</p>
+        <button class="small_button" id="red_button">Logout</button>
+
+    </section>
+
+
+
+    <button onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
+
+
+    <p class="title_text">Edit Exercise</p>
+    <img src="/icons/edit.png" class="add_icon" alt="">
+
+
+
+    <p id="edit_exercise_name" class="edit_text"> <span class="category">Current Name: </span> <%= name %></p>
+    <p id="edit_rounds" class="edit_text"><span class="category">Current Rounds: </span><%= rounds %></p>
+    <p id="edit_time" class="edit_text"><span class="categroy">Current Time: </span><%= time %></p>
+    <p id="edit_rest" class="edit_text"><span class="category">Current Rest: </span><%= rest %></p>
+    <p id="edit_link" class="edit_text"><span class="category">Current Link: </span><%= link %></p>
+    <p id="edit_description" class="edit_text"><span class="category">Current Description: </span><%= description %></p>
 
     
 
@@ -44,6 +65,7 @@
     </form>
 
     <script src="/js/excercise_requests.js"></script>
+    <script src="/js/redirect.js"></script>
     
 </body>
 </html>

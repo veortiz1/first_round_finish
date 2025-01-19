@@ -350,6 +350,23 @@ input::placeholder{
   color: red;
 }
 
+.edit_text{
+  color: #D6CA98;
+  font-weight: 200;
+  text-align: center;
+  font-size: var(--body-font);
+  margin: 0;
+}
+
+#ninehundred{
+  font-weight: 400;
+}
+
+.category{
+  font-weight: 900;
+  color: #D6CA98;
+}
+
 @media (min-width: 930px) and (max-width: 1280px) {
   .create_send_workout_box,.chart_box{
     width: 25rem;
