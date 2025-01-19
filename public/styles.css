@@ -161,7 +161,7 @@ body{
 }
 
 .choose_table_buttons{
-  width: 50vw;
+  width: 75vw;
   max-width: 46.875rem;
   display: flex;
   justify-content: space-evenly;

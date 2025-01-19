@@ -33,6 +33,7 @@
     <input type="text" id="workout_name" name="workout_name" placeholder="Workout Name">
 
    
+    <p class="error" id="create_workout_error"></p>
     <p class="title_text">Exercises</p>
     <p class="sub_title">Click on them to add to workout</p>
     <div class="exercises_in_create_workout">
@@ -44,8 +45,11 @@
     <% }) %>
 </div>
 
-<p class="error" id="create_workout_error"></p>
+
     <button onclick="create_workout('<%=csrf%>')" class="small_button" id="tan_button" >Create Workout</button>
+
+    <br>
+    <br>
 
 
 
