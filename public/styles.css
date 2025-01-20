@@ -356,6 +356,8 @@ input::placeholder{
   text-align: center;
   font-size: var(--body-font);
   margin: 0;
+  width: 30vw;
+  text-align: center;
 }
 
 #ninehundred{

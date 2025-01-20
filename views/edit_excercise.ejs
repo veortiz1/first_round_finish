@@ -29,39 +29,41 @@
 
     <p id="edit_exercise_name" class="edit_text"> <span class="category">Current Name: </span> <%= name %></p>
     <p id="edit_rounds" class="edit_text"><span class="category">Current Rounds: </span><%= rounds %></p>
-    <p id="edit_time" class="edit_text"><span class="categroy">Current Time: </span><%= time %></p>
+    <p id="edit_time" class="edit_text"><span class="category">Current Time: </span><%= time %></p>
     <p id="edit_rest" class="edit_text"><span class="category">Current Rest: </span><%= rest %></p>
     <p id="edit_link" class="edit_text"><span class="category">Current Link: </span><%= link %></p>
     <p id="edit_description" class="edit_text"><span class="category">Current Description: </span><%= description %></p>
 
     
+    <p class="edit_text" id="ninehundred">*If you don't want to change a value just leave field empty!</p>
 
 
     <form id="add_excercise_form">
-        <p class="error" id="exercise_form_error"></p>
-        <label for="name">Excercise Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
+       
 
-        <label for="rounds">Rounds:</label>
-        <input type="text" id="rounds" name="rounds" required><br><br>
+        <input type="text" id="name" name="name" placeholder="Name">
 
-        <label for="time">Round Time:</label>
-        <input type="text" id="time" name="time" required><br><br>
+  
+        <input type="text" id="rounds" name="rounds" placeholder="Rounds">
 
-        <label for="rest">Rest:</label>
-        <input type="text" id="rest" name="rest" required><br><br>
+      
+        <input type="text" id="time" name="time" placeholder="Time">
 
-        <label for="link">Video Link:</label>
-        <input type="text" id="link" name="link" required><br><br>
+    
+        <input type="text" id="rest" name="rest" placeholder="Rest">
+
+        
+        <input type="text" id="link" name="link" placeholder="Link">
 
 
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br><br>
+       
+        <input type="text" id="description" name="description" required placeholder="Description">
 
         <input type="hidden" id="csrf_edit_exercise" value="<%= csrf %>">
 
-        <button type="button" onclick="edit_excercise_form()">Submit</button>
+        <button type="button" onclick="edit_excercise_form()" id="tan_button" class="small_button">Submit</button>
+        <p class="error" id="exercise_form_error"></p>
     </form>
 
     <script src="/js/excercise_requests.js"></script>

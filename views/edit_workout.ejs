@@ -9,13 +9,26 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <p>edit workout</p>
+<body id="create_client_body">
+
+
+    <section class="row_frame_space_between" id="username_and_logout"> 
+        <p class="title_text">Veortiz1</p>
+        <button class="small_button" id="red_button">Logout</button>
+
+    </section>
+
+    <button onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
+
+
+
+    <p class="title_text">edit workout</p>
     <p><%= workout_name %></p>
     <p class="error" id="workout_text"></p>
 
     <% exercises.forEach(function(exercise) { %>
 
+        
         <div class="edit_workout_row">
 
         <p><%= exercise.name %></p>
@@ -40,28 +53,28 @@
       <p class="error" id="edit_workout_exercise_error"></p>
 
       <form >
-        <label for="e_name">Excercise Name:</label>
-        <input type="text" id="e_name" name="e_name" ><br><br>
+      
+        <input type="text" id="e_name" name="e_name" placeholder="Name">
 
-        <label for="rounds">Rounds:</label>
-        <input type="number" id="rounds" name="rounds" ><br><br>
+   
+        <input type="number" id="rounds" name="rounds" placeholder="Rounds" >
 
-        <label for="time">Round Time:</label>
-        <input type="number" id="time" name="time" ><br><br>
+        
+        <input type="number" id="time" name="time"  placeholder="Time">
 
-        <label for="rest">Rest:</label>
-        <input type="number" id="rest" name="rest" ><br><br>
+   
+        <input type="number" id="rest" name="rest"  placeholder="Rest">
 
-        <label for="link">Video Link:</label>
-        <input type="text" id="link" name="link" ><br><br>
+        
+        <input type="text" id="link" name="link"  placeholder="Link">
 
 
 
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" ><br><br>
+  
+        <input type="text" id="description" name="description" placeholder="Description" >
         <input type="hidden" value="<%= csrf %>" id="csrf_edit_workout_exercise">
 
-        <button type="button" onclick="edit_workout_exercise('<%= csrf %>')">Submit</button>
+        <button type="button" onclick="edit_workout_exercise('<%= csrf %>')" class="small_button" id="tan_button">Submit</button>
     </form>
 
 
