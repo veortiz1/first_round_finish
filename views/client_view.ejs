@@ -9,12 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Bebas+Neue&family=Concert+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jaro:opsz@6..72&family=Kadwa:wght@400;700&family=Lacquer&family=Londrina+Solid:wght@100;300;400;900&family=Luckiest+Guy&family=Miriam+Libre:wght@400..700&family=Monda:wght@400..700&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Permanent+Marker&family=Protest+Revolution&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rock+Salt&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body id="client_view_body">
-    <p class="weekday_text" id="todays_workout">Monday's Workout</p>
+<body id="create_client_body">
+    <p class="title_text" id="todays_workout">Monday's Workout</p>
 
     <div class="button_frame">
-        <button id="create_workout" onclick="change_slide(2)">Previous Day</button>
-        <button id="create_workout" onclick="change_slide(1)">Next Day</button>
+        <button id="tan_button" class="small_button" onclick="change_slide(2)">Previous Day</button>
+        <button id="tan_button" class="small_button" onclick="change_slide(1)">Next Day</button>
     </div>
 
 
@@ -24,18 +24,19 @@
 
     <div class="weekday" id="monday">
     <% for(let i = 0;i<monday.length;i++){ %>
+        <p class="title_text"> <%= monday[i].name %></p>
         <div class="weekday_workout">
-        <p>Exercise Name: <%= monday[i].name %></p>
+      
         <p>Rounds:<%= monday[i].rounds %></p>
         <p>Time: <%= monday[i].time %></p>
         <p>Rest: <%= monday[i].rest %></p>
        
         
     </div>
-    <p class="title" id="red_text">Video:</p>
-    <p> <%= monday[i].link %></p>
-    <p class="title" id="purple"> Description/Notes:</p>
-    <p>Description: <%= monday[i].description %></p>
+    <p class="video_text" ><%= monday[i].link %></p>
+  
+    <p class="description_text" > <%= monday[i].description %></p>
+  
 
     <% } %>
 

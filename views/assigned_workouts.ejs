@@ -22,15 +22,15 @@
 
  
   
-    <p>Which Clients Workout Do you Want to send?</p>
+    <p class="title_text">Which Clients Workout Do you Want to send?</p>
     <select name="client_input" id="view_client">
       <% for (let i = 0; i < results1.length; i++) { %>
         <option value="<%= results1[i].c_id %>"><%= results1[i].name %></option>
       <% } %>
     </select>
 
-    <button onclick="get_workouts()" id="create_workout" class="margin_top">What they'll receive</button>
-    <button onclick="get_workouts()" id="create_workout">Send Workouts to Client</button>
+    <button onclick="get_workouts()" id="tan_button" class="small_button">What they'll receive</button>
+    <button onclick="get_workouts()" id="tan_button" class="small_button">Send Workouts to Client</button>
     
     <script src="/js/assign_requests.js"></script>
             

@@ -7,9 +7,7 @@
   --border-width:.2rem;
   --small_button_text:1rem;
   --small_button_padding:.6rem;
-  
   --margin-between:2.5rem;
-
   --box-font:1.25rem;
   --table-font:1rem;
   --form-margin:1rem
@@ -69,8 +67,6 @@ body{
   font-weight: 900;
   border-radius: 3rem;
   border: none;
-
-
 }
 
 #red_button{
@@ -81,33 +77,26 @@ body{
 }
 
 .title_frame{
-
   display: flex;
   width: 98vw;
-
   max-width: 91.875rem;
   margin-top: var(--margin-between);
   margin-bottom: var(--margin-between);
-  
 }
 
 
 .create_send_workout_box,.chart_box{
   width: 20.9rem;
-
   height: 15rem;
-
   display: flex;
   border: var(--border-width) solid #D6CA98;
   padding: 1rem;
   border-radius: 1.5rem;
-
 }
 
 .chart_box{
   background-color: #D6CA98;
 }
-
 .create_send_workout_box_left{
   width: 10.45rem;
 
@@ -120,12 +109,10 @@ body{
 
 .create_send_workout_box_right{
   width: 10.45rem;
-
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 .box_title{
@@ -198,13 +185,7 @@ table,#workout_table,#exercise_table,#client_table{
 tr{
   width: 98vw;
   max-width: 91.875rem;
-
- 
-
   margin: 0;
-
-
-
 }
 
 th{
@@ -214,19 +195,13 @@ th{
   font-family: "Inter", serif;
   font-weight: 900;
   text-align: center;
- 
+
   background-color: #D6CA98;
   color:#D6CA98;
   padding: 1rem;
   font-size: var(--table-font);
-
   background-color: #D6CA98;
   color: #655A7C;
- 
- 
-
-  
- 
 }
 
 
@@ -399,6 +374,67 @@ select{
   color: #655A7C;
 }
 
+.weekday_workout{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 98vw;
+  max-width: 91.875rem;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: var(--body-font);
+ 
+
+
+}
+
+.weekday_workout p{
+
+  padding:1rem;
+  background-color: #D6CA98;
+  color: #655A7C;
+  font-weight: 500;
+ 
+  width: 50vw;
+
+
+
+}
+
+.weekday{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 98vw;
+  max-width: 91.875rem;
+ 
+}
+
+.video_text{
+ 
+  padding: 1rem;
+  color: white;
+  background-color: #D6CA98;
+  width: 50vw;
+  text-align: center;
+
+  color: #655A7C;
+  font-weight: 500;
+}
+
+
+.description_text{
+ background-color: #D6CA98;
+  padding: 1rem;
+  color: white;
+  width: 50vw;
+  text-align: center;
+
+  color:#655A7C;
+  font-weight: 500;
+
+}
+
 @media (min-width: 930px) and (max-width: 1280px) {
   .create_send_workout_box,.chart_box{
     width: 25rem;
@@ -489,10 +525,3 @@ select{
 
 
 }
-
-
-
-
-
-
-
