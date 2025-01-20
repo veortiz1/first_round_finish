@@ -18,13 +18,22 @@
 
     </section>
 
+
+
     <button onclick="add_client_home()" class="small_button" id="red_button">Go Back</button>
 
 
 
-    <p class="title_text">edit workout</p>
-    <p><%= workout_name %></p>
-    <p class="error" id="workout_text"></p>
+    <p class="title_text">Edit Workout</p>
+    <img src="/icons/edit.png" class="add_icon" alt="">
+ 
+
+    <p class="edit_text" id="ninehundred">*Select and Exercise you want to edit then fill out the form at the bottom of the page and submit it to edit the exercise for this workout.</p>
+
+    <p class="edit_text" id="ninehundred">*Or you can click remove exercise to remove the exercise from this workout.</p>
+
+
+
 
     <% exercises.forEach(function(exercise) { %>
 
@@ -32,13 +41,8 @@
         <div class="edit_workout_row">
 
         <p><%= exercise.name %></p>
-        <p><%= exercise.rounds %></p>
-        <p><%= exercise.time %></p>
-        <p><%= exercise.rest %></p>
-        <p><%= exercise.link %></p>
-        <p><%= exercise.description %></p>
-        <button onclick="set_w_id('<%= exercise.we_id %>', '<%= exercise.name %>')">edit</button>
-        <button onclick="delete_from_workout('<%= exercise.we_id %>','<%= csrf %>')">delete</button>
+        <button onclick="set_w_id('<%= exercise.we_id %>', '<%= exercise.name %>')" class="small_button" id="tan_button">Edit Exercise</button>
+        <button onclick="delete_from_workout('<%= exercise.we_id %>','<%= csrf %>')" class="small_button" id="red_button">Remove Exercise</button>
 
     </div>
 
@@ -48,9 +52,9 @@
         <% }) %>
 
 
-      <p id="currently_editing">Currently Editing no exercises</p>
+      <p id="currently_editing">Currently Editing: No Exercise</p>
 
-      <p class="error" id="edit_workout_exercise_error"></p>
+
 
       <form >
       
@@ -73,13 +77,16 @@
   
         <input type="text" id="description" name="description" placeholder="Description" >
         <input type="hidden" value="<%= csrf %>" id="csrf_edit_workout_exercise">
+   
 
         <button type="button" onclick="edit_workout_exercise('<%= csrf %>')" class="small_button" id="tan_button">Submit</button>
+        <p class="error" id="workout_text"></p>
     </form>
 
 
 
         <script src="/js/workouts_requests.js"></script>
+        <script src="/js/redirect.js"></script>
 
 
     
